@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Accessible version of the research poster: Geckos from the Late Oligocene and Early Miocene of Peninsular Florida. Includes screen-reader support, figure captions, and data tables." />
+  <title>Geckos from the Late Oligocene and Early Miocene of Peninsular Florida — Accessible Poster</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <button type="button" class="side-nav-toggle" id="side-nav-toggle" aria-controls="side-nav" aria-expanded="false">
+    Sections
+  </button>
+  <div class="side-nav-backdrop" id="side-nav-backdrop" aria-hidden="true"></div>
+  <nav class="side-nav" id="side-nav" aria-label="Section navigation" aria-hidden="true">
+    <div class="side-nav__top">
+      <p class="side-nav__label" id="side-nav-label">Sections</p>
+      <button type="button" class="side-nav__close" id="side-nav-close" aria-label="Close section navigation">×</button>
+    </div>
+    <div class="side-nav__list" role="list">
+      <button type="button" class="side-nav__btn" data-target="introduction" role="listitem">Introduction</button>
+      <button type="button" class="side-nav__btn" data-target="methods" role="listitem">Methods</button>
+      <button type="button" class="side-nav__btn" data-target="results" role="listitem">Results</button>
+      <button type="button" class="side-nav__btn" data-target="conclusion" role="listitem">Conclusion</button>
+      <button type="button" class="side-nav__btn" data-target="in-progress" role="listitem">In progress</button>
+      <button type="button" class="side-nav__btn" data-target="contributions" role="listitem">Author contributions</button>
+      <button type="button" class="side-nav__btn" data-target="acknowledgements" role="listitem">Acknowledgements</button>
+      <button type="button" class="side-nav__btn" data-target="references" role="listitem">References</button>
+    </div>
+  </nav>
+
+  <div class="page-shell">
+  <div class="page-content">
+  <header class="site-header" role="banner">
+    <h1>Geckos from the Late Oligocene and Early Miocene of Peninsular Florida</h1>
+    <div class="site-header__below">
+      <div class="site-header__inner">
+        <p class="authors">
+          Hunter C. Neeley<sup>1,2</sup>, Jason R. Bourque<sup>2</sup>, Andrew N. Caudill<sup>1</sup>, and Mitchell S. Riegler<sup>2</sup>
+        </p>
+        <p class="affiliations">
+          <span><sup>1</sup> Department of Geology, University of Florida, Gainesville, Florida, USA</span>
+          <span><sup>2</sup> Division of Vertebrate Paleontology, Florida Museum of Natural History, Gainesville, Florida, USA</span>
+        </p>
+        <p class="contact"><a href="mailto:hunterneeley@ufl.edu">hunterneeley@ufl.edu</a></p>
+      </div>
+      <figure class="hero-visual">
+        <img
+          src="assets/durognathus-skeleton.png"
+          alt="Skeletal reconstruction labeled cf. Coleonyx (TF), lateral view."
+          width="1200"
+          height="850"
+        />
+        <figcaption>cf. <i>Coleonyx</i> (TF)</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="intro-perch">
+      <figure class="hero-gecko" aria-hidden="false">
+        <img
+          src="assets/coleonyx-brevis-hero.png"
+          alt="Live Texas banded gecko, Coleonyx brevis, in lateral view."
+          width="1024"
+          height="512"
+        />
+        <figcaption><i>Coleonyx brevis</i></figcaption>
+      </figure>
+    <section id="introduction" class="section section--intro" data-readable aria-labelledby="intro-heading">
+      <div class="section__head">
+        <h2 id="intro-heading">Introduction</h2>
+        <button type="button" class="listen-section" data-listen-target="introduction" aria-label="Listen to Introduction section">Listen</button>
+      </div>
+
+      <h3>Background &amp; context</h3>
+      <p>
+        Geckos have a broad geographic range spanning from xeric deserts to wet tropical rain forest (see Figure 3).
+        Despite estimated divergence time in the early to mid-Jurassic, little is known about their pre-Quaternary fossil record.
+        Recently recovered cranial and vertebral fossils from three of Florida’s oldest sites—
+        Brooksville 2 (~26 Ma), Miller Site (~19.5–19 Ma), and Thomas Farm (TF) (~18.5 Ma)—
+        offer rare insight into this gap. Here, we evaluate the taxonomic identity, biogeographic significance,
+        and paleoecological implications of these specimens across the Oligo-Miocene transition.
+      </p>
+      <p>
+        While some paleoecological data exist, comprehensive environmental reconstructions remain unresolved,
+        with studies conflicting over Florida’s mid-Cenozoic flora, paleoclimates, and whether these paleoenvironments
+        were insular or peninsular.
+      </p>
+
+      <h3>Approach</h3>
+      <p>
+        Because geckos and other microvertebrates act as sensitive ecological specialists, they serve as ideal climate proxies.
+        To resolve our understanding of these paleoenvironments, we integrate our gecko findings with a holistic review
+        of the associated microvertebrate assemblages across all three sites.
+      </p>
+
+      <figure class="figure figure--light" aria-labelledby="fig-localities-cap">
+        <img
+          src="assets/florida-map.png"
+          alt="Satellite map of Florida on a light blue background with orange arrows marking Thomas Farm in north-central Florida, Miller Site on the Gulf Big Bend coast, and Brooksville 2 in west-central Florida."
+          width="1024"
+          height="984"
+        />
+        <figcaption id="fig-localities-cap">
+          <strong>Figure: Fossil localities.</strong>
+          Satellite map of Florida marking Thomas Farm, Miller Site, and Brooksville 2.
+        </figcaption>
+        <details class="long-desc">
+          <summary>Long description</summary>
+          <p>
+            Thomas Farm lies inland in north-central Florida; Miller Site is on the northwestern Gulf “Big Bend”
+            coast; Brooksville 2 is in west-central Florida north of Tampa Bay.
+            Associated taxa for each site are listed below.
+          </p>
+        </details>
+      </figure>
+
+      <div class="locality-grid" role="list">
+        <article class="locality-card" role="listitem">
+          <h4>Brooksville 2 <span class="age">~26 Ma</span></h4>
+          <ul>
+            <li>Helodermatidae</li>
+            <li>Eublepharidae</li>
+            <li>aff. <i>Boa</i></li>
+            <li>Rhinophrynidae</li>
+            <li>aff. <i>Basiliscus</i></li>
+            <li>aff. <i>Ctenosaura</i></li>
+          </ul>
+        </article>
+        <article class="locality-card" role="listitem">
+          <h4>Miller Site <span class="age">~19.5–19 Ma</span></h4>
+          <ul>
+            <li>Helodermatidae</li>
+            <li>Eublepharidae</li>
+            <li>aff. <i>Boa</i></li>
+            <li>aff. <i>Ctenosaura</i></li>
+            <li>aff. <i>Basiliscus</i></li>
+          </ul>
+        </article>
+        <article class="locality-card" role="listitem">
+          <h4>Thomas Farm (TF) <span class="age">~18.5 Ma</span></h4>
+          <ul>
+            <li><i>Heloderma</i> sp.</li>
+            <li>cf. <i>Coleonyx</i></li>
+            <li><i>Boa</i> sp.</li>
+            <li>aff. <i>Basiliscus</i></li>
+            <li>aff. <i>Tadarida</i></li>
+            <li>aff. <i>Ctenosaura</i></li>
+            <li>Heteromyidae</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    </div><!-- /.intro-perch -->
+
+    <section id="methods" class="section" data-readable aria-labelledby="methods-heading">
+      <div class="section__head">
+        <h2 id="methods-heading">Methods</h2>
+        <button type="button" class="listen-section" data-listen-target="methods" aria-label="Listen to Methods section">Listen</button>
+      </div>
+      <ul>
+        <li>
+          <strong>Phylogenetic reconstruction:</strong> To build a comprehensive cladogram, we compiled a combined dataset.
+          We scored 108 morphological characters (50 newly formulated for this study) and integrated them with
+          1 molecular, 2 mitochondrial, and 3 nuclear gene regions for a total-evidence phylogenetic analysis.
+          Analyses were run using BEAST2 on the UF supercomputer (HiPerGator).
+        </li>
+        <li>
+          <strong>Paleoenvironmental modeling:</strong> MaxEnt niche modeling was performed using BioClim
+          (BIO 1, 3–7, 12–15; 30 arcsec), topographic (slope and elevation; 30 arcsec), and SoilGrids
+          (sand, silt, clay, pH H<sub>2</sub>O, SOC; 0–5 cm; 30 arcsec) variables on extant species analogous
+          to Florida fossil taxa to reconstruct Late Oligocene and Early Miocene environments (Figures 1, 2, and 4).
+        </li>
+      </ul>
+    </section>
+
+    <section id="results" class="section" data-readable aria-labelledby="results-heading">
+      <div class="section__head">
+        <h2 id="results-heading">Results</h2>
+        <button type="button" class="listen-section" data-listen-target="results" aria-label="Listen to Results section">Listen</button>
+      </div>
+
+      <div id="fossils" class="results-block" data-readable aria-labelledby="fossils-heading">
+      <h3 id="fossils-heading">Fossils and comparative specimens</h3>
+<p>
+        Comparative anatomical plates of Oligo-Miocene gecko elements (Thomas Farm / Brooksville 2)
+        and extant <i>Coleonyx reticulatus</i>. Views follow the poster labels:
+        Dorsal, Labial, Lingual, Anterior, Posterior, and Lateral.
+      </p>
+
+      <figure class="figure" aria-labelledby="fig-max-cap">
+        <img
+          src="assets/anatomy/maxillae.png"
+          alt="Labeled maxillae plate comparing fossil cf. Coleonyx from Thomas Farm with extant C. reticulatus in dorsal, labial, and lingual views."
+          width="2000"
+          height="1299"
+        />
+        <figcaption id="fig-max-cap">
+          <strong>Maxillae.</strong>
+          cf. <i>Coleonyx</i> – TF versus <i>C. reticulatus</i>; Dorsal, Labial, and Lingual views.
+        </figcaption>
+      </figure>
+
+      <figure class="figure" aria-labelledby="fig-premax-cap">
+        <img
+          src="assets/anatomy/premaxillae.png"
+          alt="Labeled premaxillae plate comparing fossil and extant specimens in lingual and labial views."
+          width="2000"
+          height="1262"
+        />
+        <figcaption id="fig-premax-cap">
+          <strong>Premaxillae.</strong>
+          Fossil and comparative specimens in Lingual and Labial views.
+        </figcaption>
+      </figure>
+
+      <figure class="figure" aria-labelledby="fig-dent-cap">
+        <img
+          src="assets/anatomy/dentaries.png"
+          alt="Labeled dentaries plate comparing fossil cf. Coleonyx from Thomas Farm with extant C. reticulatus in dorsal, labial, and lingual views."
+          width="2000"
+          height="1002"
+        />
+        <figcaption id="fig-dent-cap">
+          <strong>Dentaries.</strong>
+          cf. <i>Coleonyx</i> – TF versus <i>C. reticulatus</i>; Dorsal, Labial, and Lingual views.
+        </figcaption>
+      </figure>
+
+      <h3>Vertebrae</h3>
+      <p>
+        Comparative vertebral plates. In each row, specimens are arranged left to right as:
+        <strong>cf. <i>Coleonyx</i> (TF)</strong>,
+        <strong><i>Coleonyx reticulatus</i></strong>, and
+        <strong><i>Eublepharis macularius</i></strong>.
+      </p>
+
+      <figure class="figure" aria-labelledby="fig-vert-overview-cap">
+        <img
+          src="assets/anatomy/vertebrae-overview.png"
+          alt="Overview plate of vertebrae. In each comparison row, left to right: cf. Coleonyx (TF), Coleonyx reticulatus, and Eublepharis macularius."
+          width="1600"
+          height="2595"
+        />
+        <figcaption id="fig-vert-overview-cap">
+          <strong>Vertebrae overview.</strong>
+          Left to right in each row: cf. <i>Coleonyx</i> (TF), <i>Coleonyx reticulatus</i>, <i>Eublepharis macularius</i>.
+        </figcaption>
+      </figure>
+
+      <div class="figure-grid">
+        <figure class="figure" aria-labelledby="fig-vert-ant-cap">
+          <img
+            src="assets/anatomy/vertebrae-anterior.png"
+            alt="Anterior view of vertebrae, left to right: cf. Coleonyx (TF), Coleonyx reticulatus, Eublepharis macularius."
+            width="1600"
+            height="892"
+          />
+          <figcaption id="fig-vert-ant-cap">
+            <strong>Anterior.</strong>
+            Left to right: cf. <i>Coleonyx</i> (TF), <i>C. reticulatus</i>, <i>E. macularius</i>.
+          </figcaption>
+        </figure>
+        <figure class="figure" aria-labelledby="fig-vert-post-cap">
+          <img
+            src="assets/anatomy/vertebrae-posterior.png"
+            alt="Posterior view of vertebrae, left to right: cf. Coleonyx (TF), Coleonyx reticulatus, Eublepharis macularius."
+            width="1600"
+            height="804"
+          />
+          <figcaption id="fig-vert-post-cap">
+            <strong>Posterior.</strong>
+            Left to right: cf. <i>Coleonyx</i> (TF), <i>C. reticulatus</i>, <i>E. macularius</i>.
+          </figcaption>
+        </figure>
+        <figure class="figure" aria-labelledby="fig-vert-dors-cap">
+          <img
+            src="assets/anatomy/vertebrae-dorsal.png"
+            alt="Dorsal view of vertebrae, left to right: cf. Coleonyx (TF), Coleonyx reticulatus, Eublepharis macularius."
+            width="1600"
+            height="616"
+          />
+          <figcaption id="fig-vert-dors-cap">
+            <strong>Dorsal.</strong>
+            Left to right: cf. <i>Coleonyx</i> (TF), <i>C. reticulatus</i>, <i>E. macularius</i>.
+          </figcaption>
+        </figure>
+        <figure class="figure" aria-labelledby="fig-vert-lat-cap">
+          <img
+            src="assets/anatomy/vertebrae-lateral.png"
+            alt="Left lateral view of vertebrae, left to right: cf. Coleonyx (TF), Coleonyx reticulatus, Eublepharis macularius."
+            width="1600"
+            height="694"
+          />
+          <figcaption id="fig-vert-lat-cap">
+            <strong>Lateral (left).</strong>
+            Left to right: cf. <i>Coleonyx</i> (TF), <i>C. reticulatus</i>, <i>E. macularius</i>.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+
+      <h3 id="clado-heading">cf. <i>Coleonyx</i> cladogram</h3>
+      <figure class="figure figure--wide figure--light" aria-labelledby="fig-clado-cap" aria-describedby="fig-clado-long">
+        <img
+          src="assets/panel-cladogram.png"
+          alt="cf. Coleonyx cladogram from the poster. Numbers beside nodes are ages in millions of years. A separate color scale shows posterior support from 0 to 1. Thomas Farm taxon is highlighted as cf. Coleonyx (Thomas Farm)."
+          width="1400"
+          height="2100"
+        />
+        <figcaption id="fig-clado-cap">
+          <strong>cf. <i>Coleonyx</i> cladogram.</strong>
+          Total-evidence tree. Numbers at nodes are <strong>node ages in millions of years</strong>
+          (not posterior probabilities). The vertical color ramp shows posterior support (0–1).
+          Thomas Farm fossils are placed as stem to <i>Coleonyx</i>.
+        </figcaption>
+        <details class="long-desc" id="fig-clado-long">
+          <summary>Long description &amp; taxa list</summary>
+          <p>
+            Outgroup: <i>Anolis carolinensis</i>. Cretaceous stem gecko <i>Gobekko cretacicus</i> sits near the base.
+            Eublepharids include <i>Hemitheconyx caudicinctus</i>, <i>Eublepharis macularius</i>, and a monophyletic
+            <i>Coleonyx</i> clade containing <i>C. mitratus</i>, <i>C. elegans</i>, <i>C. reticulatus</i>,
+            <i>C. switaki</i>, <i>C. variegatus</i>, <i>C. brevis</i>, and the Thomas Farm taxon (cf. <i>Coleonyx</i>).
+            Other gekkotan terminals include <i>Aristelliger praesignis</i>, <i>Teratoscincus scincus</i>,
+            <i>Sphaerodactylus copei</i>, <i>Gonatodes albogularis</i>, <i>Thecadactylus rapicauda</i>,
+            <i>Phyllodactylus tuberculosus</i>, <i>Gekko gecko</i>, <i>Hemidactylus garnotii</i>, and
+            <i>Cyrtodactylus pulchellus</i>. Poster note: “Node age numbers are in millions of years.”
+          </p>
+        </details>
+      </figure>
+
+      <h3>1. Extant taxa MaxEnt distribution map</h3>
+      <figure class="figure figure--light" aria-labelledby="fig1-cap" aria-describedby="fig1-long">
+        <img
+          src="assets/fig-maxent.png"
+          alt="MaxEnt distribution map of southeastern North America, Mexico, and Central America. Heat map from purple (low) to green/yellow (high) with labeled ecoregions such as Chihuahuan desert, Veracruz dry forests, Sierra de los Tuxtlas, and Yucatán dry forests."
+          width="1245"
+          height="1382"
+        />
+        <figcaption id="fig1-cap">
+          <strong>Figure 1. Extant taxa MaxEnt distribution map.</strong>
+          Heat map of modeled species richness / suitability for extant taxa analogous to Florida fossil assemblages.
+          Highest scores concentrate in southern Mexico and Central American dry forests
+          (e.g., Veracruz dry forests, Sierra de los Tuxtlas, Yucatán dry forests).
+        </figcaption>
+        <details class="long-desc" id="fig1-long">
+          <summary>Long description</summary>
+          <p>
+            MaxEnt niche modeling using BioClim, topographic, and SoilGrids variables. The top five richness scores
+            concentrate in Central American dry broadleaf forests.
+          </p>
+        </details>
+      </figure>
+
+      <h3>2. <i>Coleonyx</i> distribution map</h3>
+      <figure class="figure figure--light" aria-labelledby="fig2-cap" aria-describedby="fig2-long">
+        <img
+          src="assets/coleonyx-distribution.png"
+          alt="Coleonyx species distribution map of southwestern United States, Mexico, and Central America with colored range polygons for each species."
+          width="1800"
+          height="1255"
+        />
+        <figcaption id="fig2-cap">
+          <strong>Figure 2. <i>Coleonyx</i> distribution map.</strong>
+          Current geographic ranges of <i>Coleonyx</i> species, including <i>C. brevis</i>, <i>C. elegans</i>,
+          <i>C. fasciatus</i>, <i>C. mitratus</i>, <i>C. nemoralis</i>, <i>C. reticulatus</i>,
+          <i>C. switaki</i>, and <i>C. variegatus</i>.
+        </figcaption>
+        <details class="long-desc" id="fig2-long">
+          <summary>Long description</summary>
+          <p>
+            Modern <i>Coleonyx</i> is concentrated west of the Mississippi, with no native species in Florida today.
+            The Thomas Farm referral expands the known historical range of the genus far east of its present distribution.
+          </p>
+        </details>
+      </figure>
+
+      <h3>3. Gecko families native distribution map</h3>
+      <figure class="figure figure--light" aria-labelledby="fig3-cap" aria-describedby="fig3-long">
+        <img
+          src="assets/gecko-families-map.png"
+          alt="World map with color-coded patterns showing native distributions of major gecko families."
+          width="1800"
+          height="943"
+        />
+        <figcaption id="fig3-cap">
+          <strong>Figure 3. Gecko families native distribution map.</strong>
+          Global native ranges of gecko families (Eublepharidae, Gekkonidae, Phyllodactylidae,
+          Sphaerodactylidae, and others).
+        </figcaption>
+        <details class="long-desc" id="fig3-long">
+          <summary>Long description</summary>
+          <p>
+            Family-level ranges show geckos from deserts through wet tropical forests.
+            Eublepharidae have a more restricted modern footprint than Gekkonidae,
+            making Oligo-Miocene Florida occurrences biogeographically significant.
+          </p>
+        </details>
+      </figure>
+
+      <h3>4. Preferred regions by genus</h3>
+      <figure class="figure figure--wide figure--light" aria-labelledby="fig4-cap" aria-describedby="fig4-long">
+        <img
+          src="assets/preferred-region.png"
+          alt="Preferred regions by genus chart. Genera Heloderma, Tadarida, Coleonyx, Ctenosaura, Rhinophrynus, Boa, Heteromys, and Basiliscus plotted along BioClim PC1 from arid deserts and xeric shrublands through dry broadleaf forests to moist broadleaf forests. Orange lines mark biome medians; a dashed line marks max range overlap."
+          width="2000"
+          height="1400"
+        />
+        <figcaption id="fig4-cap">
+          <strong>Figure 4. Preferred regions by genus.</strong>
+          BioClim PC1 niches (BIO1, 3–7, 12–15) for genera analogous to the Florida assemblage,
+          from arid (Deserts &amp; Xeric Shrublands) through Dry Broadleaf Forests to mesic Moist Broadleaf Forests.
+          Solid orange lines = biome medians; dashed line = max range overlap.
+        </figcaption>
+        <details class="long-desc" id="fig4-long" open>
+          <summary>Accessible data table</summary>
+          <div class="table-wrap">
+            <table>
+              <caption>Preferred environmental region by genus (qualitative summary of BioClim PC1 niches)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Genus</th>
+                  <th scope="col">Preferred region along BioClim PC1</th>
+                  <th scope="col">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><i>Heloderma</i></th>
+                  <td>Deserts &amp; xeric shrublands / arid</td>
+                  <td>Most arid-leaning of the plotted genera</td>
+                </tr>
+                <tr>
+                  <th scope="row"><i>Tadarida</i></th>
+                  <td>Arid to dry forest</td>
+                  <td>Range spans xeric into dry broadleaf scores</td>
+                </tr>
+                <tr>
+                  <th scope="row"><i>Coleonyx</i></th>
+                  <td>Dry broadleaf / transition</td>
+                  <td>IQR centered near dry–moist forest transition; box plot shown (n≥4)</td>
+                </tr>
+                <tr>
+                  <th scope="row"><i>Ctenosaura</i></th>
+                  <td>Dry to moist broadleaf transition</td>
+                  <td>Box plot shown; overlaps semi-mesic forest belt</td>
+                </tr>
+                <tr>
+                  <th scope="row"><i>Rhinophrynus</i></th>
+                  <td>Toward moist broadleaf / mesic</td>
+                  <td>Wetter end of the sampled gradient</td>
+                </tr>
+                <tr>
+                  <th scope="row"><i>Boa</i></th>
+                  <td>Broad / mesic-leaning</td>
+                  <td>Wide climatic envelope toward moist forest scores</td>
+                </tr>
+                <tr>
+                  <th scope="row"><i>Heteromys</i></th>
+                  <td>Dry–moist transition to mesic</td>
+                  <td>Box plot shown (n≥4)</td>
+                </tr>
+                <tr>
+                  <th scope="row"><i>Basiliscus</i></th>
+                  <td>Moist broadleaf / mesic</td>
+                  <td>Box plot shown; most mesic-leaning lizard genus plotted</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </figure>
+    </section>
+
+    <section id="conclusion" class="section" data-readable aria-labelledby="conclusion-heading">
+      <div class="section__head">
+        <h2 id="conclusion-heading">Conclusion</h2>
+        <button type="button" class="listen-section" data-listen-target="conclusion" aria-label="Listen to Conclusion section">Listen</button>
+      </div>
+
+      <h3>Oligo-Miocene geckos of Florida</h3>
+      <ul class="key-points">
+        <li><strong>Taxonomic identification:</strong> Comparative morphological analysis allies Thomas Farm and Brooksville 2 gecko fossils most favorably with Eublepharidae.</li>
+        <li><strong>Phylogenetic placement:</strong> Total-evidence phylogenetic analysis supports referring the Thomas Farm geckos as stem to the genus <i>Coleonyx</i>.</li>
+        <li><strong>Biogeographic firsts:</strong> First pre-Quaternary record of eublepharids in North America and first record of <i>Coleonyx</i> east of Texas.</li>
+        <li><strong>Global significance:</strong> Brooksville 2 specimens represent the oldest documented occurrence of Eublepharidae globally.</li>
+        <li><strong>Chronological impact:</strong> Establishes crucial evidence for early Miocene distribution and evolutionary timing of North American eublepharids.</li>
+      </ul>
+
+      <h3>Paleoenvironment of Florida</h3>
+      <ul class="key-points">
+        <li>MaxEnt modeling indicates top species-richness scores concentrate in Central American dry broadleaf forests.</li>
+        <li>Genus-level environmental suitability peaks in the transition zone between dry and moist forests.</li>
+        <li>We hypothesize Brooksville 2, Miller, and Thomas Farm were semi-mesic forests, with Thomas Farm functioning as a forest–grassland ecotone.</li>
+        <li>This is consistent with <i>Parahippus</i> at Thomas Farm, a transitional forest–grassland taxon.</li>
+        <li>Reconstructed habitats align with predictions that the ancestor of modern <i>Coleonyx</i> inhabited a mesic forested environment.</li>
+      </ul>
+    </section>
+
+    <section id="in-progress" class="section" data-readable aria-labelledby="progress-heading">
+      <div class="section__head">
+        <h2 id="progress-heading">In progress</h2>
+        <button type="button" class="listen-section" data-listen-target="in-progress" aria-label="Listen to In progress section">Listen</button>
+      </div>
+      <ul>
+        <li><strong>Taxonomic anomaly:</strong> Fossils resembling <i>Ctenosaura</i> and <i>Basiliscus</i> are under more detailed analysis.</li>
+        <li><strong>Sphaerodactylid:</strong> Tentative sphaerodactylid material may represent a second Caribbean faunal overlap in late Oligocene Florida; additional screen washing is ongoing.</li>
+      </ul>
+    </section>
+
+    <section id="contributions" class="section" data-readable aria-labelledby="contrib-heading">
+      <div class="section__head">
+        <h2 id="contrib-heading">Author contributions</h2>
+        <button type="button" class="listen-section" data-listen-target="contributions" aria-label="Listen to Author contributions">Listen</button>
+      </div>
+      <p>
+        HN designed the study, identified specimens, collected and analyzed the data, produced figures,
+        performed comparative analysis, and created the poster. JB, AC, and MR contributed to study design,
+        identified specimens, and analyzed data. JB prepared fossil specimens, AC helped with phylogenetic analysis,
+        and MR produced computed tomography data and figures. All authors contributed to conceptualization,
+        interpretation, and editorial feedback.
+      </p>
+    </section>
+
+    <section id="acknowledgements" class="section" data-readable aria-labelledby="ack-heading">
+      <div class="section__head">
+        <h2 id="ack-heading">Acknowledgements</h2>
+        <button type="button" class="listen-section" data-listen-target="acknowledgements" aria-label="Listen to Acknowledgements section">Listen</button>
+      </div>
+      <p>
+        We thank R. Narducci for access to FLMNH vertebrate paleontology collections; A. Jukar and J. Bloch for
+        research permission; and E. Stanley for specimen scans. Special thanks to A. Woodruff for early project help,
+        R. Hulbert Jr. for mammalian and biogeographical contributions, and C. Sheehy III and D. Blackburn for
+        access to FLMNH herpetology collections.
+      </p>
+    </section>
+
+    <section id="references" class="section" data-readable aria-labelledby="ref-heading">
+      <div class="section__head">
+        <h2 id="ref-heading">References</h2>
+        <button type="button" class="listen-section" data-listen-target="references" aria-label="Listen to References section">Listen</button>
+      </div>
+      <p class="ref-note">Key citations highlighted on the poster. Full bibliography is available via the QR code and APA list.</p>
+      <ol class="refs">
+        <li>Bhullar, B.-A. S., &amp; Smith, K. T. (2008). Helodermatid lizard from the Miocene of Florida… <i>Journal of Herpetology, 42</i>(2), 286–302.</li>
+        <li>Blackburn, D. C., et al. (2019). First record of the anuran family Rhinophrynidae from the Oligocene of eastern North America. <i>Journal of Herpetology, 53</i>(4), 316–323.</li>
+        <li>Chovanec, K. (2014). <i>Non-anguimorph lizards of the Late Oligocene and Early Miocene of Florida…</i> [Master’s thesis, East Tennessee State University].</li>
+        <li>Czaplewski, N. J., Morgan, G. S., &amp; Naeher, T. (2003). Molossid bats from the late Tertiary of Florida… <i>Acta Chiropterologica, 5</i>(1), 61–74.</li>
+        <li>Daza, J. D., Bauer, A. M., &amp; Snively, E. D. (2014). On the fossil record of the Gekkota. <i>The Anatomical Record, 297</i>(3), 433–462.</li>
+        <li>Dial, B. E., &amp; Grismer, L. L. (1992). A phylogenetic analysis… in the lizard genus <i>Coleonyx</i>… <i>Systematic Biology, 41</i>(2), 178–195.</li>
+        <li>Hayes, F. G. (2000). The Brooksville 2 local fauna… <i>Bulletin of the Florida Museum of Natural History, 43</i>(1), 1–47.</li>
+        <li>Hulbert, R. C., Jr. (2001). <i>The fossil vertebrates of Florida</i>. University Press of Florida.</li>
+        <li>Zheng, Y., &amp; Wiens, J. J. (2016). Combining phylogenomic and supermatrix approaches… <i>Molecular Phylogenetics and Evolution, 94</i>, 537–547.</li>
+      </ol>
+      <figure class="figure figure--qr figure--light">
+        <img src="assets/citations-qr.svg" alt="QR code linking to full citation list." width="180" height="180" />
+        <figcaption>Scan for all citations.</figcaption>
+      </figure>
+      <p><a href="../APA_References.html">Open full APA reference list</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>
+      Accessible web version of poster V8 (10-13-26 FIXED) FINAL VERSION.
+      Use the accessibility bar to listen, enlarge text, toggle high contrast, or show/hide figure captions.
+    </p>
+    <p><a href="#main">Back to top</a></p>
+  </footer>
+  </div><!-- /.page-content -->
+  </div><!-- /.page-shell -->
+
+  <div class="a11y-bar" role="region" aria-label="Accessibility controls">
+    <div class="a11y-bar__inner">
+      <div class="a11y-bar__logos">
+        <img src="assets/uf-logo-bar.png" alt="University of Florida logo" width="120" height="119" />
+        <img src="assets/flmnh-logo-bar.png" alt="Florida Museum logo" width="86" height="120" />
+      </div>
+      <div class="a11y-bar__controls">
+        <p class="a11y-bar__label" id="a11y-label">Accessibility</p>
+        <div class="a11y-controls" role="toolbar" aria-labelledby="a11y-label">
+          <button type="button" id="btn-listen-page" class="a11y-btn a11y-btn--primary" aria-pressed="false">
+            Listen to page
+          </button>
+          <button type="button" id="btn-stop" class="a11y-btn" disabled>Stop</button>
+          <button type="button" id="btn-captions" class="a11y-btn" aria-pressed="true">Captions on</button>
+          <button type="button" id="btn-contrast" class="a11y-btn" aria-pressed="false">High contrast</button>
+          <button type="button" id="btn-text-larger" class="a11y-btn" aria-label="Increase text size">A+</button>
+          <button type="button" id="btn-text-smaller" class="a11y-btn" aria-label="Decrease text size">A−</button>
+          <button type="button" id="btn-text-reset" class="a11y-btn" aria-label="Reset text size to default">Reset zoom</button>
+          <label class="a11y-select-wrap" for="colorblind-filter">
+            <span class="a11y-select-label">Colorblind filter</span>
+            <select id="colorblind-filter" class="a11y-select" aria-label="Colorblind filter">
+              <option value="none">None</option>
+              <option value="protanopia">Protanopia (red-blind)</option>
+              <option value="deuteranopia">Deuteranopia (green-blind)</option>
+              <option value="tritanopia">Tritanopia (blue-blind)</option>
+              <option value="protanomaly">Protanomaly (red-weak)</option>
+              <option value="deuteranomaly">Deuteranomaly (green-weak)</option>
+              <option value="tritanomaly">Tritanomaly (blue-weak)</option>
+              <option value="achromatopsia">Achromatopsia (total)</option>
+            </select>
+          </label>
+        </div>
+        <p class="sr-status" id="sr-status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+    </div>
+  </div>
+
+  <svg class="cb-filters" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="cb-protanopia" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          0.567 0.433 0 0 0
+          0.558 0.442 0 0 0
+          0 0.242 0.758 0 0
+          0 0 0 1 0"/>
+      </filter>
+      <filter id="cb-deuteranopia" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          0.625 0.375 0 0 0
+          0.7 0.3 0 0 0
+          0 0.3 0.7 0 0
+          0 0 0 1 0"/>
+      </filter>
+      <filter id="cb-tritanopia" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          0.95 0.05 0 0 0
+          0 0.433 0.567 0 0
+          0 0.475 0.525 0 0
+          0 0 0 1 0"/>
+      </filter>
+      <filter id="cb-protanomaly" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          0.817 0.183 0 0 0
+          0.333 0.667 0 0 0
+          0 0.125 0.875 0 0
+          0 0 0 1 0"/>
+      </filter>
+      <filter id="cb-deuteranomaly" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          0.8 0.2 0 0 0
+          0.258 0.742 0 0 0
+          0 0.142 0.858 0 0
+          0 0 0 1 0"/>
+      </filter>
+      <filter id="cb-tritanomaly" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          0.967 0.033 0 0 0
+          0 0.733 0.267 0 0
+          0 0.183 0.817 0 0
+          0 0 0 1 0"/>
+      </filter>
+      <filter id="cb-achromatopsia" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          0.299 0.587 0.114 0 0
+          0.299 0.587 0.114 0 0
+          0.299 0.587 0.114 0 0
+          0 0 0 1 0"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <script src="app.js"></script>
+</body>
+</html>
