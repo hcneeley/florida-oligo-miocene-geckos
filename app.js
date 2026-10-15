@@ -4,6 +4,7 @@
   const btnStop = document.getElementById("btn-stop");
   const btnCaptions = document.getElementById("btn-captions");
   const btnContrast = document.getElementById("btn-contrast");
+  const btnDyslexia = document.getElementById("btn-dyslexia");
   const btnLarger = document.getElementById("btn-text-larger");
   const btnSmaller = document.getElementById("btn-text-smaller");
   const btnResetZoom = document.getElementById("btn-text-reset");
@@ -49,6 +50,10 @@
         document.body.classList.add("high-contrast");
         btnContrast?.setAttribute("aria-pressed", "true");
       }
+      if (prefs.dyslexiaFont) {
+        document.body.classList.add("dyslexia-font");
+        btnDyslexia?.setAttribute("aria-pressed", "true");
+      }
       if (prefs.captions === false) {
         document.body.classList.add("captions-off");
         btnCaptions?.setAttribute("aria-pressed", "false");
@@ -68,6 +73,7 @@
     const prefs = {
       textScale,
       highContrast: document.body.classList.contains("high-contrast"),
+      dyslexiaFont: document.body.classList.contains("dyslexia-font"),
       captions: !document.body.classList.contains("captions-off"),
       colorblindFilter,
     };
@@ -233,6 +239,13 @@
     const on = document.body.classList.toggle("high-contrast");
     btnContrast.setAttribute("aria-pressed", on ? "true" : "false");
     setStatus(on ? "High contrast on." : "High contrast off.");
+    savePrefs();
+  });
+
+  btnDyslexia?.addEventListener("click", () => {
+    const on = document.body.classList.toggle("dyslexia-font");
+    btnDyslexia.setAttribute("aria-pressed", on ? "true" : "false");
+    setStatus(on ? "Dyslexia-friendly font on." : "Dyslexia-friendly font off.");
     savePrefs();
   });
 

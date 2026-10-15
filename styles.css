@@ -54,6 +54,38 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("assets/fonts/OpenDyslexic-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("assets/fonts/OpenDyslexic-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("assets/fonts/OpenDyslexic-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("assets/fonts/OpenDyslexic-Bold-Italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   /* Poster-sampled palette */
   --title: #fc3d25;
@@ -117,6 +149,14 @@ body {
     linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
   min-height: 100vh;
   padding-bottom: calc(var(--a11y-h) + 1.5rem);
+}
+
+body.dyslexia-font {
+  --font-body: "OpenDyslexic", "Comic Sans MS", Verdana, sans-serif;
+  --font-display: "OpenDyslexic", "Comic Sans MS", Verdana, sans-serif;
+  letter-spacing: 0.04em;
+  word-spacing: 0.08em;
+  line-height: 1.8;
 }
 
 img {

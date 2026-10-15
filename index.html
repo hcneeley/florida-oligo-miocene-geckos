@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Accessible version of the research poster: Geckos from the Late Oligocene and Early Miocene of Peninsular Florida. Includes screen-reader support, figure captions, and data tables." />
   <title>Geckos from the Late Oligocene and Early Miocene of Peninsular Florida — Accessible Poster</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=dyslexia" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -604,7 +604,7 @@
         <h2 id="ref-heading">References</h2>
         <button type="button" class="listen-section" data-listen-target="references" aria-label="Listen to References section">Listen</button>
       </div>
-      <p class="ref-note">Key citations highlighted on the poster. Full bibliography is available via the QR code and APA list.</p>
+      <p class="ref-note">Key citations highlighted on the poster. Full bibliography is available via the QR code and the linked reference list.</p>
       <ol class="refs">
         <li>Bhullar, B.-A. S., &amp; Smith, K. T. (2008). Helodermatid lizard from the Miocene of Florida… <i>Journal of Herpetology, 42</i>(2), 286–302.</li>
         <li>Blackburn, D. C., et al. (2019). First record of the anuran family Rhinophrynidae from the Oligocene of eastern North America. <i>Journal of Herpetology, 53</i>(4), 316–323.</li>
@@ -620,7 +620,7 @@
         <img src="assets/citations-qr.svg" alt="QR code linking to full citation list." width="180" height="180" />
         <figcaption>Scan for all citations.</figcaption>
       </figure>
-      <p><a href="../APA_References.html">Open full APA reference list</a></p>
+      <p><a href="https://docs.google.com/document/d/18NLiK2yRfK4nqcnZGc3fI0TCuSCvD-QGL0mK4MUm22I/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Open full APA reference list</a></p>
     </section>
   </main>
 
@@ -654,6 +654,7 @@
             <button type="button" id="btn-stop" class="a11y-btn" disabled>Stop</button>
             <button type="button" id="btn-captions" class="a11y-btn" aria-pressed="true">Captions on</button>
             <button type="button" id="btn-contrast" class="a11y-btn" aria-pressed="false">High contrast</button>
+            <button type="button" id="btn-dyslexia" class="a11y-btn" aria-pressed="false">Dyslexia font</button>
             <button type="button" id="btn-text-larger" class="a11y-btn" aria-label="Increase text size">A+</button>
             <button type="button" id="btn-text-smaller" class="a11y-btn" aria-label="Decrease text size">A−</button>
             <button type="button" id="btn-text-reset" class="a11y-btn" aria-label="Reset text size to default">Reset zoom</button>
@@ -750,6 +751,6 @@
     <p class="lightbox__hint">Scroll to zoom · drag to pan · Esc to close</p>
   </dialog>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=dyslexia"></script>
 </body>
 </html>
