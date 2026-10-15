@@ -13,7 +13,7 @@
 
   const STORAGE_KEY = "gecko-poster-a11y-v5";
   const MIN_TEXT = 14; // pt
-  const MAX_TEXT = 32; // pt
+  const MAX_TEXT = 48; // pt
   const TEXT_STEP = 2;
   const DEFAULT_TEXT = 18; // pt
   const COLORBLIND_TYPES = [

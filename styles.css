@@ -1024,8 +1024,12 @@ main {
 
 .figure figcaption {
   padding: 0.85rem 1rem 0.35rem;
-  font-size: 0.98em;
+  font-size: var(--text);
   line-height: 1.5;
+}
+
+.figure figcaption strong {
+  font-size: 1em;
 }
 
 .figure--light figcaption {
@@ -1047,7 +1051,7 @@ body.captions-off .long-desc {
 
 .long-desc {
   padding: 0 1rem 1rem;
-  font-size: 1em;
+  font-size: var(--text);
 }
 
 .long-desc summary {
@@ -1249,6 +1253,7 @@ body.reading-active [data-readable].is-speaking {
   gap: 0.5rem 1rem;
   padding: 0.65rem 0.85rem;
   background: var(--bar);
+  color: #f6f1e8;
   border-bottom: 2px solid #483b1d;
 }
 
