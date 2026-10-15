@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Accessible version of the research poster: Geckos from the Late Oligocene and Early Miocene of Peninsular Florida. Includes screen-reader support, figure captions, and data tables." />
   <title>Geckos from the Late Oligocene and Early Miocene of Peninsular Florida — Accessible Poster</title>
-  <link rel="stylesheet" href="styles.css?v=dyslexia" />
+  <link rel="stylesheet" href="styles.css?v=voice" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -652,6 +652,35 @@
               Listen to page
             </button>
             <button type="button" id="btn-stop" class="a11y-btn" disabled>Stop</button>
+            <div class="a11y-menu">
+              <button
+                type="button"
+                id="btn-voice-menu"
+                class="a11y-btn"
+                aria-expanded="false"
+                aria-controls="voice-menu-panel"
+              >
+                Voice
+              </button>
+              <div class="a11y-menu__panel" id="voice-menu-panel" role="dialog" aria-label="Voice options" hidden>
+                <p class="a11y-menu__heading">Voice options</p>
+                <label class="a11y-menu__field" for="speech-rate">
+                  <span>Rate</span>
+                  <select id="speech-rate" class="a11y-select">
+                    <option value="0.75">Slow</option>
+                    <option value="1" selected>Normal</option>
+                    <option value="1.25">Fast</option>
+                    <option value="1.5">Faster</option>
+                  </select>
+                </label>
+                <label class="a11y-menu__field" for="speech-voice">
+                  <span>Voice</span>
+                  <select id="speech-voice" class="a11y-select">
+                    <option value="">System default</option>
+                  </select>
+                </label>
+              </div>
+            </div>
             <button type="button" id="btn-captions" class="a11y-btn" aria-pressed="true">Captions on</button>
             <button type="button" id="btn-contrast" class="a11y-btn" aria-pressed="false">High contrast</button>
             <button type="button" id="btn-dyslexia" class="a11y-btn" aria-pressed="false">Dyslexia font</button>
@@ -751,6 +780,6 @@
     <p class="lightbox__hint">Scroll to zoom · drag to pan · Esc to close</p>
   </dialog>
 
-  <script src="app.js?v=dyslexia"></script>
+  <script src="app.js?v=voice"></script>
 </body>
 </html>

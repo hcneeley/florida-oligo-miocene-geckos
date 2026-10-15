@@ -629,6 +629,59 @@ body.a11y-bar-minimized .a11y-bar__toggle-icon {
   background: #fff;
 }
 
+.a11y-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.a11y-menu__panel {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.55rem);
+  transform: translateX(-50%);
+  z-index: 60;
+  width: min(18rem, calc(100vw - 2rem));
+  padding: 0.85rem 0.9rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius);
+  background: #4a4338;
+  color: #f6f1e8;
+  box-shadow: 0 10px 28px rgba(39, 30, 14, 0.35);
+  text-align: left;
+}
+
+.a11y-menu__panel[hidden] {
+  display: none;
+}
+
+.a11y-menu__heading {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.a11y-menu__field {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0 0 0.55rem;
+  font-size: 0.85rem;
+}
+
+.a11y-menu__field:last-child {
+  margin-bottom: 0;
+}
+
+.a11y-menu__field .a11y-select {
+  max-width: none;
+  width: 100%;
+}
+
+body.high-contrast .a11y-menu__panel {
+  background: #000;
+  border-color: #fff;
+  color: #fff;
+}
+
 .cb-filters {
   position: absolute;
   width: 0;

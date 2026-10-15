@@ -10,7 +10,7 @@ Conference posters are hard to use for many people: dense layouts, small text, a
 
 ## Accessibility features
 
-- **Listen controls** — built-in speech (Web Speech API) for the full page or individual sections (`Alt+R` / `Alt+S`)
+- **Listen controls** — built-in speech (Web Speech API) for the full page or individual sections (`Alt+R` / `Alt+S`), with a Voice menu for rate and voice selection
 - **Figure captions and long descriptions** — text alternatives for maps, cladograms, and anatomical plates
 - **Display options** — larger/smaller text, reset zoom, high contrast, OpenDyslexic font, and colorblind simulation filters
 - **Keyboard-friendly navigation** — skip link, section menu, and visible focus styles

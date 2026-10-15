@@ -9,6 +9,10 @@
   const btnSmaller = document.getElementById("btn-text-smaller");
   const btnResetZoom = document.getElementById("btn-text-reset");
   const colorblindSelect = document.getElementById("colorblind-filter");
+  const btnVoiceMenu = document.getElementById("btn-voice-menu");
+  const voiceMenuPanel = document.getElementById("voice-menu-panel");
+  const speechRateSelect = document.getElementById("speech-rate");
+  const speechVoiceSelect = document.getElementById("speech-voice");
   const a11yBarToggle = document.getElementById("a11y-bar-toggle");
   const a11yBarToggleLabel = a11yBarToggle?.querySelector(".visually-hidden");
 
@@ -17,6 +21,8 @@
   const MAX_TEXT = 48; // pt
   const TEXT_STEP = 2;
   const DEFAULT_TEXT = 18; // pt
+  const DEFAULT_SPEECH_RATE = 1;
+  const SPEECH_RATES = [0.75, 1, 1.25, 1.5];
   const COLORBLIND_TYPES = [
     "none",
     "protanopia",
@@ -30,6 +36,8 @@
 
   let textScale = DEFAULT_TEXT;
   let colorblindFilter = "none";
+  let speechRate = DEFAULT_SPEECH_RATE;
+  let speechVoiceURI = "";
   let queue = [];
   let speaking = false;
   let speechSession = 0;
@@ -62,11 +70,18 @@
       if (typeof prefs.colorblindFilter === "string" && COLORBLIND_TYPES.includes(prefs.colorblindFilter)) {
         colorblindFilter = prefs.colorblindFilter;
       }
+      if (typeof prefs.speechRate === "number" && SPEECH_RATES.includes(prefs.speechRate)) {
+        speechRate = prefs.speechRate;
+      }
+      if (typeof prefs.speechVoiceURI === "string") {
+        speechVoiceURI = prefs.speechVoiceURI;
+      }
     } catch {
       /* ignore corrupt prefs */
     }
     applyTextScale();
     applyColorblindFilter();
+    applySpeechControls();
   }
 
   function savePrefs() {
@@ -76,8 +91,75 @@
       dyslexiaFont: document.body.classList.contains("dyslexia-font"),
       captions: !document.body.classList.contains("captions-off"),
       colorblindFilter,
+      speechRate,
+      speechVoiceURI,
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+  }
+
+  function getSpeechVoices() {
+    if (!speechSupported) return [];
+    return window.speechSynthesis.getVoices() || [];
+  }
+
+  function populateSpeechVoices() {
+    if (!speechVoiceSelect) return;
+    const voices = getSpeechVoices();
+    const previous = speechVoiceURI || speechVoiceSelect.value;
+    speechVoiceSelect.innerHTML = "";
+    const defaultOpt = document.createElement("option");
+    defaultOpt.value = "";
+    defaultOpt.textContent = "System default";
+    speechVoiceSelect.appendChild(defaultOpt);
+
+    voices
+      .slice()
+      .sort((a, b) => {
+        const aEn = (a.lang || "").toLowerCase().startsWith("en") ? 0 : 1;
+        const bEn = (b.lang || "").toLowerCase().startsWith("en") ? 0 : 1;
+        if (aEn !== bEn) return aEn - bEn;
+        return (a.name || "").localeCompare(b.name || "");
+      })
+      .forEach((voice) => {
+        const opt = document.createElement("option");
+        opt.value = voice.voiceURI;
+        opt.textContent = `${voice.name} (${voice.lang})`;
+        speechVoiceSelect.appendChild(opt);
+      });
+
+    if (previous && [...speechVoiceSelect.options].some((o) => o.value === previous)) {
+      speechVoiceSelect.value = previous;
+      speechVoiceURI = previous;
+    } else {
+      speechVoiceSelect.value = "";
+      if (previous) speechVoiceURI = "";
+    }
+  }
+
+  function applySpeechControls() {
+    if (speechRateSelect) speechRateSelect.value = String(speechRate);
+    if (speechVoiceSelect) {
+      speechVoiceSelect.value =
+        speechVoiceURI && [...speechVoiceSelect.options].some((o) => o.value === speechVoiceURI)
+          ? speechVoiceURI
+          : "";
+    }
+  }
+
+  function configureUtterance(utter) {
+    utter.rate = speechRate;
+    utter.pitch = 1;
+    if (speechVoiceURI) {
+      const voice = getSpeechVoices().find((v) => v.voiceURI === speechVoiceURI);
+      if (voice) utter.voice = voice;
+    }
+  }
+
+  function setVoiceMenuOpen(open) {
+    if (!btnVoiceMenu || !voiceMenuPanel) return;
+    voiceMenuPanel.hidden = !open;
+    btnVoiceMenu.setAttribute("aria-expanded", open ? "true" : "false");
+    btnVoiceMenu.classList.toggle("a11y-btn--primary", open);
   }
 
   function applyTextScale() {
@@ -168,8 +250,7 @@
       if (item.el) item.el.classList.add("is-speaking");
 
       const utter = new SpeechSynthesisUtterance(item.text);
-      utter.rate = 1;
-      utter.pitch = 1;
+      configureUtterance(utter);
       utter.onstart = () => {
         if (!isActive()) return;
         setStatus(`Reading: ${item.title || "section"}`);
@@ -227,6 +308,54 @@
     });
   });
 
+  btnVoiceMenu?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = btnVoiceMenu.getAttribute("aria-expanded") !== "true";
+    setVoiceMenuOpen(open);
+    if (open) {
+      populateSpeechVoices();
+      applySpeechControls();
+      speechRateSelect?.focus();
+    }
+  });
+
+  voiceMenuPanel?.addEventListener("click", (e) => e.stopPropagation());
+
+  document.addEventListener("click", () => {
+    if (btnVoiceMenu?.getAttribute("aria-expanded") === "true") setVoiceMenuOpen(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && btnVoiceMenu?.getAttribute("aria-expanded") === "true") {
+      setVoiceMenuOpen(false);
+      btnVoiceMenu.focus();
+    }
+  });
+
+  speechRateSelect?.addEventListener("change", () => {
+    const next = Number(speechRateSelect.value);
+    speechRate = SPEECH_RATES.includes(next) ? next : DEFAULT_SPEECH_RATE;
+    setStatus(`Speech rate set to ${speechRateSelect.selectedOptions[0]?.textContent || speechRate}.`);
+    savePrefs();
+  });
+
+  speechVoiceSelect?.addEventListener("change", () => {
+    speechVoiceURI = speechVoiceSelect.value || "";
+    setStatus(`Voice set to ${speechVoiceSelect.selectedOptions[0]?.textContent || "System default"}.`);
+    savePrefs();
+  });
+
+  if (speechSupported) {
+    populateSpeechVoices();
+    window.speechSynthesis.addEventListener("voiceschanged", () => {
+      populateSpeechVoices();
+      applySpeechControls();
+    });
+  } else {
+    if (speechRateSelect) speechRateSelect.disabled = true;
+    if (speechVoiceSelect) speechVoiceSelect.disabled = true;
+  }
+
   btnCaptions?.addEventListener("click", () => {
     const off = document.body.classList.toggle("captions-off");
     btnCaptions.setAttribute("aria-pressed", off ? "false" : "true");
@@ -282,6 +411,7 @@
   // Accessibility bar starts maximized; arrow toggles minimize/expand
   function setA11yBarMinimized(minimized) {
     document.body.classList.toggle("a11y-bar-minimized", minimized);
+    if (minimized) setVoiceMenuOpen(false);
     a11yBarToggle?.setAttribute("aria-expanded", minimized ? "false" : "true");
     a11yBarToggle?.setAttribute(
       "title",
