@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Accessible version of the research poster: Geckos from the Late Oligocene and Early Miocene of Peninsular Florida. Includes screen-reader support, figure captions, and data tables." />
   <title>Geckos from the Late Oligocene and Early Miocene of Peninsular Florida — Accessible Poster</title>
-  <link rel="stylesheet" href="styles.css?v=a11y-orange" />
+  <link rel="stylesheet" href="styles.css?v=color-assist-ui" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -692,18 +692,18 @@
               <button type="button" id="btn-text-smaller" class="a11y-btn" aria-label="Decrease text size">A−</button>
               <button type="button" id="btn-text-reset" class="a11y-btn" aria-label="Reset text size to default">Reset zoom</button>
             </div>
-            <div class="a11y-controls__group a11y-controls__group--filter" role="group" aria-label="Colorblind filter">
+            <div class="a11y-controls__group a11y-controls__group--filter" role="group" aria-label="Color assist">
               <label class="a11y-select-wrap" for="colorblind-filter">
-                <span class="a11y-select-label">Colorblind</span>
-                <select id="colorblind-filter" class="a11y-select" aria-label="Colorblind filter">
+                <span class="a11y-select-label">Color assist</span>
+                <select id="colorblind-filter" class="a11y-select" aria-label="Color vision assist filter">
                   <option value="none">None</option>
-                  <option value="protanopia">Protanopia (red-blind)</option>
-                  <option value="deuteranopia">Deuteranopia (green-blind)</option>
-                  <option value="tritanopia">Tritanopia (blue-blind)</option>
-                  <option value="protanomaly">Protanomaly (red-weak)</option>
-                  <option value="deuteranomaly">Deuteranomaly (green-weak)</option>
-                  <option value="tritanomaly">Tritanomaly (blue-weak)</option>
-                  <option value="achromatopsia">Achromatopsia (total)</option>
+                  <option value="protanopia">Protanopia assist (red-blind)</option>
+                  <option value="deuteranopia">Deuteranopia assist (green-blind)</option>
+                  <option value="tritanopia">Tritanopia assist (blue-blind)</option>
+                  <option value="protanomaly">Protanomaly assist (red-weak)</option>
+                  <option value="deuteranomaly">Deuteranomaly assist (green-weak)</option>
+                  <option value="tritanomaly">Tritanomaly assist (blue-weak)</option>
+                  <option value="achromatopsia">Achromatopsia assist (luminance)</option>
                 </select>
               </label>
             </div>
@@ -717,56 +717,62 @@
     </div>
   </div>
 
+  <!-- LMS daltonization: remaps confusable colors into channels the viewer can still separate (assistive, not simulation). -->
   <svg class="cb-filters" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
     <defs>
-      <filter id="cb-protanopia" color-interpolation-filters="sRGB">
+      <filter id="cb-protanopia" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
         <feColorMatrix type="matrix" values="
-          0.567 0.433 0 0 0
-          0.558 0.442 0 0 0
-          0 0.242 0.758 0 0
+          1 0 0 0 0
+          0.4789 0.4769 0.0442 0 0
+          0.5973 -0.6887 1.0914 0 0
           0 0 0 1 0"/>
       </filter>
-      <filter id="cb-deuteranopia" color-interpolation-filters="sRGB">
+      <filter id="cb-deuteranopia" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
         <feColorMatrix type="matrix" values="
-          0.625 0.375 0 0 0
-          0.7 0.3 0 0 0
-          0 0.3 0.7 0 0
+          1 0 0 0 0
+          0.1628 0.725 0.1122 0 0
+          0.4547 -0.6454 1.1907 0 0
           0 0 0 1 0"/>
       </filter>
-      <filter id="cb-tritanopia" color-interpolation-filters="sRGB">
+      <filter id="cb-tritanopia" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
         <feColorMatrix type="matrix" values="
-          0.95 0.05 0 0 0
-          0 0.433 0.567 0 0
-          0 0.475 0.525 0 0
+          1 0 0 0 0
+          -0.1005 1.1229 -0.0225 0 0
+          -0.1836 -0.6376 1.8212 0 0
           0 0 0 1 0"/>
       </filter>
-      <filter id="cb-protanomaly" color-interpolation-filters="sRGB">
+      <filter id="cb-protanomaly" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
         <feColorMatrix type="matrix" values="
-          0.817 0.183 0 0 0
-          0.333 0.667 0 0 0
-          0 0.125 0.875 0 0
+          1 0 0 0 0
+          0.2634 0.7123 0.0243 0 0
+          0.3285 -0.3788 1.0503 0 0
           0 0 0 1 0"/>
       </filter>
-      <filter id="cb-deuteranomaly" color-interpolation-filters="sRGB">
+      <filter id="cb-deuteranomaly" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
         <feColorMatrix type="matrix" values="
-          0.8 0.2 0 0 0
-          0.258 0.742 0 0 0
-          0 0.142 0.858 0 0
+          1 0 0 0 0
+          0.0895 0.8488 0.0617 0 0
+          0.2501 -0.3550 1.1049 0 0
           0 0 0 1 0"/>
       </filter>
-      <filter id="cb-tritanomaly" color-interpolation-filters="sRGB">
+      <filter id="cb-tritanomaly" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
         <feColorMatrix type="matrix" values="
-          0.967 0.033 0 0 0
-          0 0.733 0.267 0 0
-          0 0.183 0.817 0 0
+          1 0 0 0 0
+          -0.0553 1.0676 -0.0124 0 0
+          -0.1010 -0.3507 1.4517 0 0
           0 0 0 1 0"/>
       </filter>
-      <filter id="cb-achromatopsia" color-interpolation-filters="sRGB">
+      <filter id="cb-achromatopsia" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
         <feColorMatrix type="matrix" values="
           0.299 0.587 0.114 0 0
           0.299 0.587 0.114 0 0
           0.299 0.587 0.114 0 0
           0 0 0 1 0"/>
+        <feComponentTransfer>
+          <feFuncR type="linear" slope="1.4" intercept="-0.2"/>
+          <feFuncG type="linear" slope="1.4" intercept="-0.2"/>
+          <feFuncB type="linear" slope="1.4" intercept="-0.2"/>
+        </feComponentTransfer>
       </filter>
     </defs>
   </svg>
@@ -787,6 +793,6 @@
     <p class="lightbox__hint">Scroll to zoom · drag to pan · Esc to close</p>
   </dialog>
 
-  <script src="app.js?v=persistent-logos"></script>
+  <script src="app.js?v=color-assist"></script>
 </body>
 </html>

@@ -221,6 +221,8 @@ a:hover {
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 1rem;
+  --cb-filter: none;
+  filter: var(--cb-filter);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
@@ -248,6 +250,8 @@ a:hover {
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.2s ease, visibility 0.2s ease;
+  --cb-filter: none;
+  filter: var(--cb-filter);
 }
 
 .side-nav-backdrop.is-open {
@@ -272,6 +276,8 @@ a:hover {
   transition: transform 0.22s ease;
   box-shadow: 8px 0 24px rgba(0, 0, 0, 0.25);
   pointer-events: none;
+  --cb-filter: none;
+  filter: var(--cb-filter);
 }
 
 .side-nav.is-open {
@@ -384,6 +390,8 @@ body.high-contrast .side-nav__btn.is-active {
   color: #f6f1e8;
   border-top: 3px solid #483b1d;
   box-shadow: 0 -6px 24px rgba(39, 30, 14, 0.28);
+  --cb-filter: none;
+  filter: var(--cb-filter);
 }
 
 .a11y-bar__toggle {
@@ -707,21 +715,49 @@ body.high-contrast .a11y-menu__panel {
   pointer-events: none;
 }
 
-/* Colorblind simulation filters (page content; bar stays usable) */
+/* Color-vision assist filters (page + menus/buttons outside the shell) */
 html.cb-protanopia .page-shell,
-html.cb-protanopia .lightbox__stage { --cb-filter: url("#cb-protanopia"); }
+html.cb-protanopia .lightbox,
+html.cb-protanopia .a11y-bar,
+html.cb-protanopia .side-nav,
+html.cb-protanopia .side-nav-toggle,
+html.cb-protanopia .side-nav-backdrop { --cb-filter: url("#cb-protanopia"); }
 html.cb-deuteranopia .page-shell,
-html.cb-deuteranopia .lightbox__stage { --cb-filter: url("#cb-deuteranopia"); }
+html.cb-deuteranopia .lightbox,
+html.cb-deuteranopia .a11y-bar,
+html.cb-deuteranopia .side-nav,
+html.cb-deuteranopia .side-nav-toggle,
+html.cb-deuteranopia .side-nav-backdrop { --cb-filter: url("#cb-deuteranopia"); }
 html.cb-tritanopia .page-shell,
-html.cb-tritanopia .lightbox__stage { --cb-filter: url("#cb-tritanopia"); }
+html.cb-tritanopia .lightbox,
+html.cb-tritanopia .a11y-bar,
+html.cb-tritanopia .side-nav,
+html.cb-tritanopia .side-nav-toggle,
+html.cb-tritanopia .side-nav-backdrop { --cb-filter: url("#cb-tritanopia"); }
 html.cb-protanomaly .page-shell,
-html.cb-protanomaly .lightbox__stage { --cb-filter: url("#cb-protanomaly"); }
+html.cb-protanomaly .lightbox,
+html.cb-protanomaly .a11y-bar,
+html.cb-protanomaly .side-nav,
+html.cb-protanomaly .side-nav-toggle,
+html.cb-protanomaly .side-nav-backdrop { --cb-filter: url("#cb-protanomaly"); }
 html.cb-deuteranomaly .page-shell,
-html.cb-deuteranomaly .lightbox__stage { --cb-filter: url("#cb-deuteranomaly"); }
+html.cb-deuteranomaly .lightbox,
+html.cb-deuteranomaly .a11y-bar,
+html.cb-deuteranomaly .side-nav,
+html.cb-deuteranomaly .side-nav-toggle,
+html.cb-deuteranomaly .side-nav-backdrop { --cb-filter: url("#cb-deuteranomaly"); }
 html.cb-tritanomaly .page-shell,
-html.cb-tritanomaly .lightbox__stage { --cb-filter: url("#cb-tritanomaly"); }
+html.cb-tritanomaly .lightbox,
+html.cb-tritanomaly .a11y-bar,
+html.cb-tritanomaly .side-nav,
+html.cb-tritanomaly .side-nav-toggle,
+html.cb-tritanomaly .side-nav-backdrop { --cb-filter: url("#cb-tritanomaly"); }
 html.cb-achromatopsia .page-shell,
-html.cb-achromatopsia .lightbox__stage { --cb-filter: url("#cb-achromatopsia"); }
+html.cb-achromatopsia .lightbox,
+html.cb-achromatopsia .a11y-bar,
+html.cb-achromatopsia .side-nav,
+html.cb-achromatopsia .side-nav-toggle,
+html.cb-achromatopsia .side-nav-backdrop { --cb-filter: url("#cb-achromatopsia"); }
 
 .listen-section {
   border-color: var(--line);
@@ -1410,6 +1446,8 @@ body.reading-active [data-readable].is-speaking {
   background: var(--panel);
   color: var(--ink);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --cb-filter: none;
+  filter: var(--cb-filter);
 }
 
 .lightbox::backdrop {

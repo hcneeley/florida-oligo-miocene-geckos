@@ -404,7 +404,7 @@
     colorblindFilter = COLORBLIND_TYPES.includes(next) ? next : "none";
     applyColorblindFilter();
     const label = colorblindSelect.options[colorblindSelect.selectedIndex]?.text || colorblindFilter;
-    setStatus(colorblindFilter === "none" ? "Colorblind filter off." : `Colorblind filter: ${label}.`);
+    setStatus(colorblindFilter === "none" ? "Color assist filter off." : `Color assist filter: ${label}.`);
     savePrefs();
   });
 
