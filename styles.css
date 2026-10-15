@@ -454,9 +454,28 @@ body.a11y-bar-minimized .a11y-bar__toggle-icon {
   max-width: min(52rem, 100%);
 }
 
+.a11y-bar__end {
+  grid-column: 3;
+  justify-self: end;
+  align-self: center;
+  z-index: 1;
+}
+
+.a11y-bar__top {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.a11y-bar__top:hover,
+.a11y-bar__top:focus-visible {
+  color: #fff;
+}
+
 @media (max-width: 900px) {
   .a11y-bar__inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
   }
 
   .a11y-bar__logos {
@@ -464,8 +483,13 @@ body.a11y-bar-minimized .a11y-bar__toggle-icon {
     justify-self: start;
   }
 
+  .a11y-bar__end {
+    grid-column: 2;
+    justify-self: end;
+  }
+
   .a11y-bar__controls {
-    grid-column: 1;
+    grid-column: 1 / -1;
     justify-self: center;
     width: 100%;
   }
@@ -928,8 +952,7 @@ main {
 .section p,
 .section li,
 .section figcaption,
-.locality-card,
-.table-wrap {
+.locality-card {
   max-width: 100%;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -1086,24 +1109,42 @@ body.captions-off .long-desc {
   background: #fffef9;
   border: 2px solid var(--header-bar-soft);
   border-radius: var(--radius);
+  max-width: 100%;
 }
 
 .table-wrap--nowrap {
+  overflow-x: auto;
   overflow-wrap: normal;
   word-break: normal;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrap__title {
+  margin: 0;
+  padding: 0.85rem 1rem 0.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  width: max-content;
+  max-width: none;
+}
+
+.table-wrap--nowrap .table-wrap__title,
+.table-wrap--nowrap th,
+.table-wrap--nowrap td,
+.table-wrap--nowrap th *,
+.table-wrap--nowrap td * {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  hyphens: none !important;
 }
 
 .table-wrap--nowrap table {
   width: max-content;
-  min-width: 100%;
-}
-
-.table-wrap--nowrap caption,
-.table-wrap--nowrap th,
-.table-wrap--nowrap td {
-  white-space: nowrap;
-  overflow-wrap: normal;
-  word-break: normal;
+  min-width: max-content;
+  max-width: none;
+  table-layout: auto;
 }
 
 table {
@@ -1160,14 +1201,6 @@ th {
 
 .ref-note {
   color: var(--muted);
-}
-
-.site-footer {
-  max-width: none;
-  margin: 0;
-  padding: 1.5rem 0 1rem;
-  color: var(--muted);
-  font-size: 0.98rem;
 }
 
 /* High contrast mode */

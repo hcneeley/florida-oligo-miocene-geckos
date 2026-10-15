@@ -477,8 +477,10 @@
         <details class="long-desc" id="fig4-long" open>
           <summary>Accessible data table</summary>
           <div class="table-wrap table-wrap--nowrap">
-            <table>
-              <caption>Preferred environmental region by genus (qualitative summary of BioClim PC1 niches)</caption>
+            <p class="table-wrap__title" id="preferred-region-table-title">
+              Preferred environmental region by genus (qualitative summary of BioClim PC1 niches)
+            </p>
+            <table aria-labelledby="preferred-region-table-title">
               <thead>
                 <tr>
                   <th scope="col">Genus</th>
@@ -489,43 +491,43 @@
               <tbody>
                 <tr>
                   <th scope="row"><i>Heloderma</i></th>
-                  <td>Deserts &amp; xeric shrublands / arid</td>
-                  <td>Most arid-leaning of the plotted genera</td>
+                  <td>Deserts &amp; xeric shrublands into dry broadleaf</td>
+                  <td>Most arid-leaning; range from strongly arid scores into dry broadleaf (no box)</td>
                 </tr>
                 <tr>
                   <th scope="row"><i>Tadarida</i></th>
-                  <td>Arid to dry forest</td>
-                  <td>Range spans xeric into dry broadleaf scores</td>
+                  <td>Deserts &amp; xeric shrublands</td>
+                  <td>Restricted to arid/xeric scores; does not reach dry broadleaf (no box)</td>
                 </tr>
                 <tr>
                   <th scope="row"><i>Coleonyx</i></th>
-                  <td>Dry broadleaf / transition</td>
-                  <td>IQR centered near dry–moist forest transition; box plot shown (n≥4)</td>
+                  <td>Arid through dry–moist transition</td>
+                  <td>Broad range; IQR from deserts into dry broadleaf; box plot shown (n≥4)</td>
                 </tr>
                 <tr>
                   <th scope="row"><i>Ctenosaura</i></th>
-                  <td>Dry to moist broadleaf transition</td>
-                  <td>Box plot shown; overlaps semi-mesic forest belt</td>
+                  <td>Dry broadleaf forests</td>
+                  <td>Median near dry broadleaf; box plot shown; whiskers into moist scores</td>
                 </tr>
                 <tr>
                   <th scope="row"><i>Rhinophrynus</i></th>
-                  <td>Toward moist broadleaf / mesic</td>
-                  <td>Wetter end of the sampled gradient</td>
+                  <td>Dry–moist broadleaf transition</td>
+                  <td>Short range between dry and moist medians (no box)</td>
                 </tr>
                 <tr>
                   <th scope="row"><i>Boa</i></th>
-                  <td>Broad / mesic-leaning</td>
-                  <td>Wide climatic envelope toward moist forest scores</td>
+                  <td>Toward moist broadleaf / mesic</td>
+                  <td>Range from post–dry-broadleaf scores to moist broadleaf median (no box)</td>
                 </tr>
                 <tr>
                   <th scope="row"><i>Heteromys</i></th>
-                  <td>Dry–moist transition to mesic</td>
-                  <td>Box plot shown (n≥4)</td>
+                  <td>Moist broadleaf / mesic</td>
+                  <td>Box plot shown (n≥4); IQR near moist broadleaf median</td>
                 </tr>
                 <tr>
                   <th scope="row"><i>Basiliscus</i></th>
                   <td>Moist broadleaf / mesic</td>
-                  <td>Box plot shown; most mesic-leaning lizard genus plotted</td>
+                  <td>Box plot shown; most mesic-leaning of the plotted genera</td>
                 </tr>
               </tbody>
             </table>
@@ -622,9 +624,6 @@
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <p><a href="#top">Back to top</a></p>
-  </footer>
   </div><!-- /.page-content -->
   </div><!-- /.page-shell -->
 
@@ -673,6 +672,9 @@
             </label>
           </div>
           <p class="sr-status" id="sr-status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <div class="a11y-bar__end">
+          <a class="a11y-btn a11y-bar__top" href="#top">Back to top</a>
         </div>
       </div>
     </div>
