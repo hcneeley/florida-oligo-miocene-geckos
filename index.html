@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Accessible version of the research poster: Geckos from the Late Oligocene and Early Miocene of Peninsular Florida. Includes screen-reader support, figure captions, and data tables." />
   <title>Geckos from the Late Oligocene and Early Miocene of Peninsular Florida — Accessible Poster</title>
-  <link rel="stylesheet" href="styles.css?v=voice" />
+  <link rel="stylesheet" href="styles.css?v=a11y-logos" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -634,10 +634,10 @@
       id="a11y-bar-toggle"
       aria-expanded="true"
       aria-controls="a11y-bar-panel"
-      title="Minimize accessibility bar"
+      title="Hide accessibility controls"
     >
-      <span class="a11y-bar__toggle-icon" aria-hidden="true">▼</span>
-      <span class="visually-hidden">Minimize accessibility bar</span>
+      <span class="a11y-bar__toggle-text">Accessibility</span>
+      <span class="visually-hidden">Hide accessibility controls</span>
     </button>
     <div class="a11y-bar__panel" id="a11y-bar-panel">
       <div class="a11y-bar__inner">
@@ -646,60 +646,67 @@
           <img src="assets/flmnh-logo-bar.png" alt="Florida Museum logo" width="86" height="120" />
         </div>
         <div class="a11y-bar__controls">
-          <p class="a11y-bar__label" id="a11y-label">Accessibility</p>
-          <div class="a11y-controls" role="toolbar" aria-labelledby="a11y-label">
-            <button type="button" id="btn-listen-page" class="a11y-btn a11y-btn--primary" aria-pressed="false">
-              Listen to page
-            </button>
-            <button type="button" id="btn-stop" class="a11y-btn" disabled>Stop</button>
-            <div class="a11y-menu">
-              <button
-                type="button"
-                id="btn-voice-menu"
-                class="a11y-btn"
-                aria-expanded="false"
-                aria-controls="voice-menu-panel"
-              >
-                Voice
+          <div class="a11y-controls" role="toolbar" aria-label="Accessibility controls">
+            <div class="a11y-controls__group" role="group" aria-label="Listen">
+              <button type="button" id="btn-listen-page" class="a11y-btn a11y-btn--primary" aria-pressed="false">
+                Listen to page
               </button>
-              <div class="a11y-menu__panel" id="voice-menu-panel" role="dialog" aria-label="Voice options" hidden>
-                <p class="a11y-menu__heading">Voice options</p>
-                <label class="a11y-menu__field" for="speech-rate">
-                  <span>Rate</span>
-                  <select id="speech-rate" class="a11y-select">
-                    <option value="0.75">Slow</option>
-                    <option value="1" selected>Normal</option>
-                    <option value="1.25">Fast</option>
-                    <option value="1.5">Faster</option>
-                  </select>
-                </label>
-                <label class="a11y-menu__field" for="speech-voice">
-                  <span>Voice</span>
-                  <select id="speech-voice" class="a11y-select">
-                    <option value="">System default</option>
-                  </select>
-                </label>
+              <button type="button" id="btn-stop" class="a11y-btn" disabled>Stop</button>
+              <div class="a11y-menu">
+                <button
+                  type="button"
+                  id="btn-voice-menu"
+                  class="a11y-btn"
+                  aria-expanded="false"
+                  aria-controls="voice-menu-panel"
+                >
+                  Voice
+                </button>
+                <div class="a11y-menu__panel" id="voice-menu-panel" role="dialog" aria-label="Voice options" hidden>
+                  <p class="a11y-menu__heading">Voice options</p>
+                  <label class="a11y-menu__field" for="speech-rate">
+                    <span>Rate</span>
+                    <select id="speech-rate" class="a11y-select">
+                      <option value="0.75">Slow</option>
+                      <option value="1" selected>Normal</option>
+                      <option value="1.25">Fast</option>
+                      <option value="1.5">Faster</option>
+                    </select>
+                  </label>
+                  <label class="a11y-menu__field" for="speech-voice">
+                    <span>Voice</span>
+                    <select id="speech-voice" class="a11y-select">
+                      <option value="">System default</option>
+                    </select>
+                  </label>
+                </div>
               </div>
             </div>
-            <button type="button" id="btn-captions" class="a11y-btn" aria-pressed="true">Captions on</button>
-            <button type="button" id="btn-contrast" class="a11y-btn" aria-pressed="false">High contrast</button>
-            <button type="button" id="btn-dyslexia" class="a11y-btn" aria-pressed="false">Dyslexia font</button>
-            <button type="button" id="btn-text-larger" class="a11y-btn" aria-label="Increase text size">A+</button>
-            <button type="button" id="btn-text-smaller" class="a11y-btn" aria-label="Decrease text size">A−</button>
-            <button type="button" id="btn-text-reset" class="a11y-btn" aria-label="Reset text size to default">Reset zoom</button>
-            <label class="a11y-select-wrap" for="colorblind-filter">
-              <span class="a11y-select-label">Colorblind filter</span>
-              <select id="colorblind-filter" class="a11y-select" aria-label="Colorblind filter">
-                <option value="none">None</option>
-                <option value="protanopia">Protanopia (red-blind)</option>
-                <option value="deuteranopia">Deuteranopia (green-blind)</option>
-                <option value="tritanopia">Tritanopia (blue-blind)</option>
-                <option value="protanomaly">Protanomaly (red-weak)</option>
-                <option value="deuteranomaly">Deuteranomaly (green-weak)</option>
-                <option value="tritanomaly">Tritanomaly (blue-weak)</option>
-                <option value="achromatopsia">Achromatopsia (total)</option>
-              </select>
-            </label>
+            <div class="a11y-controls__group" role="group" aria-label="Display">
+              <button type="button" id="btn-captions" class="a11y-btn" aria-pressed="true">Captions on</button>
+              <button type="button" id="btn-contrast" class="a11y-btn" aria-pressed="false">High contrast</button>
+              <button type="button" id="btn-dyslexia" class="a11y-btn" aria-pressed="false">Dyslexia font</button>
+            </div>
+            <div class="a11y-controls__group" role="group" aria-label="Text size">
+              <button type="button" id="btn-text-larger" class="a11y-btn" aria-label="Increase text size">A+</button>
+              <button type="button" id="btn-text-smaller" class="a11y-btn" aria-label="Decrease text size">A−</button>
+              <button type="button" id="btn-text-reset" class="a11y-btn" aria-label="Reset text size to default">Reset zoom</button>
+            </div>
+            <div class="a11y-controls__group a11y-controls__group--filter" role="group" aria-label="Colorblind filter">
+              <label class="a11y-select-wrap" for="colorblind-filter">
+                <span class="a11y-select-label">Colorblind</span>
+                <select id="colorblind-filter" class="a11y-select" aria-label="Colorblind filter">
+                  <option value="none">None</option>
+                  <option value="protanopia">Protanopia (red-blind)</option>
+                  <option value="deuteranopia">Deuteranopia (green-blind)</option>
+                  <option value="tritanopia">Tritanopia (blue-blind)</option>
+                  <option value="protanomaly">Protanomaly (red-weak)</option>
+                  <option value="deuteranomaly">Deuteranomaly (green-weak)</option>
+                  <option value="tritanomaly">Tritanomaly (blue-weak)</option>
+                  <option value="achromatopsia">Achromatopsia (total)</option>
+                </select>
+              </label>
+            </div>
           </div>
           <p class="sr-status" id="sr-status" aria-live="polite" aria-atomic="true"></p>
         </div>
@@ -780,6 +787,6 @@
     <p class="lightbox__hint">Scroll to zoom · drag to pan · Esc to close</p>
   </dialog>
 
-  <script src="app.js?v=voice"></script>
+  <script src="app.js?v=a11y-org"></script>
 </body>
 </html>

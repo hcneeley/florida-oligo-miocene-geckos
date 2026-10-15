@@ -408,21 +408,21 @@
     savePrefs();
   });
 
-  // Accessibility bar starts maximized; arrow toggles minimize/expand
+  // Accessibility tab toggles the bar open/closed
   function setA11yBarMinimized(minimized) {
     document.body.classList.toggle("a11y-bar-minimized", minimized);
     if (minimized) setVoiceMenuOpen(false);
     a11yBarToggle?.setAttribute("aria-expanded", minimized ? "false" : "true");
     a11yBarToggle?.setAttribute(
       "title",
-      minimized ? "Expand accessibility bar" : "Minimize accessibility bar"
+      minimized ? "Show accessibility controls" : "Hide accessibility controls"
     );
     if (a11yBarToggleLabel) {
       a11yBarToggleLabel.textContent = minimized
-        ? "Expand accessibility bar"
-        : "Minimize accessibility bar";
+        ? "Show accessibility controls"
+        : "Hide accessibility controls";
     }
-    setStatus(minimized ? "Accessibility bar minimized." : "Accessibility bar expanded.");
+    setStatus(minimized ? "Accessibility controls hidden." : "Accessibility controls shown.");
   }
 
   a11yBarToggle?.addEventListener("click", () => {
