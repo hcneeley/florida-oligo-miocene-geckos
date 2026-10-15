@@ -374,7 +374,7 @@
     });
   });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && isSideNavOpen()) {
+    if (e.key === "Escape" && isSideNavOpen() && !document.getElementById("lightbox")?.open) {
       e.preventDefault();
       closeSideNav();
     }
@@ -413,6 +413,135 @@
     );
     observed.forEach((el) => io.observe(el));
   }
+
+  // Zoomable lightbox for Florida map + Results figures
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxStage = document.getElementById("lightbox-stage");
+  const lightboxTitle = document.getElementById("lightbox-title");
+  const lightboxClose = document.getElementById("lightbox-close");
+  const lightboxZoomIn = document.getElementById("lightbox-zoom-in");
+  const lightboxZoomOut = document.getElementById("lightbox-zoom-out");
+  const lightboxZoomReset = document.getElementById("lightbox-zoom-reset");
+
+  const ZOOM_MIN = 0.5;
+  const ZOOM_MAX = 8;
+  const ZOOM_STEP = 0.25;
+  let lbZoom = 1;
+  let lbPanX = 0;
+  let lbPanY = 0;
+  let lbDragging = false;
+  let lbDragStartX = 0;
+  let lbDragStartY = 0;
+  let lbPanStartX = 0;
+  let lbPanStartY = 0;
+  let lbLastFocus = null;
+
+  function applyLightboxTransform() {
+    if (!lightboxImg) return;
+    lightboxImg.style.transform = `translate(calc(-50% + ${lbPanX}px), calc(-50% + ${lbPanY}px)) scale(${lbZoom})`;
+  }
+
+  function setLightboxZoom(next) {
+    lbZoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, next));
+    applyLightboxTransform();
+  }
+
+  function resetLightboxView() {
+    lbZoom = 1;
+    lbPanX = 0;
+    lbPanY = 0;
+    applyLightboxTransform();
+  }
+
+  function openLightbox(img) {
+    if (!lightbox || !lightboxImg) return;
+    lbLastFocus = document.activeElement;
+    const caption = img.closest("figure")?.querySelector("figcaption");
+    const title = (caption?.innerText || img.alt || "Image").replace(/\s+/g, " ").trim();
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.alt = img.alt || title;
+    if (lightboxTitle) lightboxTitle.textContent = title;
+    resetLightboxView();
+    if (typeof lightbox.showModal === "function") lightbox.showModal();
+    else lightbox.setAttribute("open", "");
+    lightboxClose?.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    if (typeof lightbox.close === "function") lightbox.close();
+    else lightbox.removeAttribute("open");
+    lightboxImg.src = "";
+    if (lbLastFocus && typeof lbLastFocus.focus === "function") lbLastFocus.focus();
+  }
+
+  document.querySelectorAll("#introduction .figure img, #results .figure img").forEach((img) => {
+    img.classList.add("zoomable");
+    img.setAttribute("tabindex", "0");
+    img.setAttribute("role", "button");
+    const caption = img.closest("figure")?.querySelector("figcaption");
+    const label = (caption?.innerText || img.alt || "image").replace(/\s+/g, " ").trim();
+    img.setAttribute("aria-label", `Open larger view: ${label}`);
+    img.addEventListener("click", () => openLightbox(img));
+    img.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openLightbox(img);
+      }
+    });
+  });
+
+  lightboxClose?.addEventListener("click", closeLightbox);
+  lightbox?.addEventListener("cancel", (e) => {
+    e.preventDefault();
+    closeLightbox();
+  });
+  lightbox?.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  lightboxZoomIn?.addEventListener("click", () => setLightboxZoom(lbZoom + ZOOM_STEP));
+  lightboxZoomOut?.addEventListener("click", () => setLightboxZoom(lbZoom - ZOOM_STEP));
+  lightboxZoomReset?.addEventListener("click", resetLightboxView);
+
+  lightboxStage?.addEventListener(
+    "wheel",
+    (e) => {
+      if (!lightbox?.open) return;
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -ZOOM_STEP : ZOOM_STEP;
+      setLightboxZoom(lbZoom + delta);
+    },
+    { passive: false }
+  );
+
+  lightboxStage?.addEventListener("pointerdown", (e) => {
+    if (!lightbox?.open) return;
+    lbDragging = true;
+    lightboxStage.classList.add("is-dragging");
+    lbDragStartX = e.clientX;
+    lbDragStartY = e.clientY;
+    lbPanStartX = lbPanX;
+    lbPanStartY = lbPanY;
+    lightboxStage.setPointerCapture?.(e.pointerId);
+  });
+
+  lightboxStage?.addEventListener("pointermove", (e) => {
+    if (!lbDragging) return;
+    lbPanX = lbPanStartX + (e.clientX - lbDragStartX);
+    lbPanY = lbPanStartY + (e.clientY - lbDragStartY);
+    applyLightboxTransform();
+  });
+
+  const endLightboxDrag = (e) => {
+    if (!lbDragging) return;
+    lbDragging = false;
+    lightboxStage?.classList.remove("is-dragging");
+    if (e?.pointerId != null) lightboxStage?.releasePointerCapture?.(e.pointerId);
+  };
+  lightboxStage?.addEventListener("pointerup", endLightboxDrag);
+  lightboxStage?.addEventListener("pointercancel", endLightboxDrag);
 
   loadPrefs();
 })();

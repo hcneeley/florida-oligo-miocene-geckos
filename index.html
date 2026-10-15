@@ -732,6 +732,22 @@
     </defs>
   </svg>
 
+  <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title">
+    <div class="lightbox__chrome">
+      <p class="lightbox__title" id="lightbox-title">Image viewer</p>
+      <div class="lightbox__tools">
+        <button type="button" class="lightbox__btn" id="lightbox-zoom-out" aria-label="Zoom out">−</button>
+        <button type="button" class="lightbox__btn" id="lightbox-zoom-in" aria-label="Zoom in">+</button>
+        <button type="button" class="lightbox__btn" id="lightbox-zoom-reset">Reset</button>
+        <button type="button" class="lightbox__btn lightbox__btn--close" id="lightbox-close">Close</button>
+      </div>
+    </div>
+    <div class="lightbox__stage" id="lightbox-stage">
+      <img class="lightbox__img" id="lightbox-img" alt="" draggable="false" />
+    </div>
+    <p class="lightbox__hint">Scroll to zoom · drag to pan · Esc to close</p>
+  </dialog>
+
   <script src="app.js"></script>
 </body>
 </html>

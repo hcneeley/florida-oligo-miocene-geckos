@@ -564,13 +564,20 @@ body.a11y-bar-minimized .a11y-bar__toggle-icon {
 }
 
 /* Colorblind simulation filters (page content; bar stays usable) */
-html.cb-protanopia .page-shell { --cb-filter: url("#cb-protanopia"); }
-html.cb-deuteranopia .page-shell { --cb-filter: url("#cb-deuteranopia"); }
-html.cb-tritanopia .page-shell { --cb-filter: url("#cb-tritanopia"); }
-html.cb-protanomaly .page-shell { --cb-filter: url("#cb-protanomaly"); }
-html.cb-deuteranomaly .page-shell { --cb-filter: url("#cb-deuteranomaly"); }
-html.cb-tritanomaly .page-shell { --cb-filter: url("#cb-tritanomaly"); }
-html.cb-achromatopsia .page-shell { --cb-filter: url("#cb-achromatopsia"); }
+html.cb-protanopia .page-shell,
+html.cb-protanopia .lightbox__stage { --cb-filter: url("#cb-protanopia"); }
+html.cb-deuteranopia .page-shell,
+html.cb-deuteranopia .lightbox__stage { --cb-filter: url("#cb-deuteranopia"); }
+html.cb-tritanopia .page-shell,
+html.cb-tritanopia .lightbox__stage { --cb-filter: url("#cb-tritanopia"); }
+html.cb-protanomaly .page-shell,
+html.cb-protanomaly .lightbox__stage { --cb-filter: url("#cb-protanomaly"); }
+html.cb-deuteranomaly .page-shell,
+html.cb-deuteranomaly .lightbox__stage { --cb-filter: url("#cb-deuteranomaly"); }
+html.cb-tritanomaly .page-shell,
+html.cb-tritanomaly .lightbox__stage { --cb-filter: url("#cb-tritanomaly"); }
+html.cb-achromatopsia .page-shell,
+html.cb-achromatopsia .lightbox__stage { --cb-filter: url("#cb-achromatopsia"); }
 
 .listen-section {
   border-color: var(--line);
@@ -1206,7 +1213,147 @@ body.reading-active [data-readable].is-speaking {
   outline-offset: 4px;
 }
 
+/* Zoomable figures + lightbox */
+.figure img.zoomable {
+  cursor: zoom-in;
+}
+
+.figure img.zoomable:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.lightbox {
+  width: min(96vw, 90rem);
+  max-width: 96vw;
+  height: min(92vh, 56rem);
+  max-height: 92vh;
+  margin: auto;
+  padding: 0;
+  border: 3px solid var(--olive);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox::backdrop {
+  background: rgba(39, 30, 14, 0.72);
+}
+
+.lightbox__chrome {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--bar);
+  border-bottom: 2px solid #483b1d;
+}
+
+.lightbox__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  max-width: min(40rem, 70vw);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lightbox__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.lightbox__btn {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: inherit;
+  border-radius: var(--radius);
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  min-width: 2.25rem;
+}
+
+.lightbox__btn:hover,
+.lightbox__btn:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.lightbox__btn--close {
+  background: var(--title);
+  border-color: var(--title);
+  color: #fff;
+}
+
+.lightbox__stage {
+  position: relative;
+  height: calc(100% - 5.5rem);
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  background: var(--panel);
+  --cb-filter: none;
+  filter: var(--cb-filter);
+}
+
+.lightbox__stage.is-dragging {
+  cursor: grabbing;
+}
+
+.lightbox__img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  max-width: 96%;
+  max-height: 96%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.lightbox__hint {
+  margin: 0;
+  padding: 0.35rem 0.85rem 0.55rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  background: var(--panel);
+}
+
+body.high-contrast .lightbox {
+  background: #000;
+  border-color: #fff;
+  color: #fff;
+}
+
+body.high-contrast .lightbox__stage,
+body.high-contrast .lightbox__hint {
+  background: #000;
+  color: #fff;
+}
+
+body.high-contrast .lightbox__chrome {
+  background: #000;
+  border-bottom-color: #fff;
+}
+
 @media print {
+  .lightbox {
+    display: none !important;
+  }
+
   .a11y-bar,
   .listen-section,
   .skip-link {
