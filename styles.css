@@ -1088,6 +1088,24 @@ body.captions-off .long-desc {
   border-radius: var(--radius);
 }
 
+.table-wrap--nowrap {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.table-wrap--nowrap table {
+  width: max-content;
+  min-width: 100%;
+}
+
+.table-wrap--nowrap caption,
+.table-wrap--nowrap th,
+.table-wrap--nowrap td {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
