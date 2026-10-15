@@ -346,6 +346,78 @@ body.high-contrast .side-nav__btn.is-active {
   box-shadow: 0 -6px 24px rgba(39, 30, 14, 0.28);
 }
 
+.a11y-bar__toggle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -100%);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 1.65rem;
+  padding: 0;
+  border: 3px solid #483b1d;
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--bar);
+  color: #f6f1e8;
+  cursor: pointer;
+  box-shadow: 0 -3px 10px rgba(39, 30, 14, 0.2);
+}
+
+.a11y-bar__toggle:hover,
+.a11y-bar__toggle:focus-visible {
+  background: #4a4338;
+}
+
+.a11y-bar__toggle-icon {
+  display: block;
+  font-size: 0.85rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+body.a11y-bar-minimized {
+  --a11y-h: 0.5rem;
+}
+
+body.a11y-bar-minimized .a11y-bar {
+  background: transparent;
+  border-top: none;
+  box-shadow: none;
+  height: 0;
+}
+
+body.a11y-bar-minimized .a11y-bar__panel {
+  display: none;
+}
+
+body.a11y-bar-minimized .a11y-bar__toggle {
+  top: auto;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  border: 3px solid #483b1d;
+  border-bottom: none;
+}
+
+body.a11y-bar-minimized .a11y-bar__toggle-icon {
+  transform: rotate(180deg);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .a11y-bar__inner {
   position: relative;
   width: 100%;
@@ -567,8 +639,9 @@ html.cb-achromatopsia .page-shell { --cb-filter: url("#cb-achromatopsia"); }
   color: var(--title);
   font-weight: 400;
   letter-spacing: 0.01em;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
   word-break: normal;
+  hyphens: none;
   text-shadow:
     -1px -1px 0 var(--title-stroke),
     1px -1px 0 var(--title-stroke),
@@ -578,7 +651,33 @@ html.cb-achromatopsia .page-shell { --cb-filter: url("#cb-achromatopsia"); }
 
 @media (max-width: 1100px) {
   .site-header h1 {
-    font-size: clamp(28pt, 6.5vw, 72pt);
+    font-size: clamp(22pt, 5.2vw, 72pt);
+  }
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    gap: 1rem;
+    padding-top: 1.1rem;
+  }
+
+  .site-header h1 {
+    font-size: clamp(20pt, 6.2vw, 34pt);
+    line-height: 1.12;
+  }
+
+  .site-header__below {
+    gap: 1rem;
+  }
+
+  .hero-visual {
+    min-height: 0;
+    max-width: 16rem;
+    margin-inline: auto;
+  }
+
+  .hero-visual img {
+    max-height: 12rem;
   }
 }
 
@@ -643,7 +742,7 @@ html.cb-achromatopsia .page-shell { --cb-filter: url("#cb-achromatopsia"); }
   margin: 0.4rem 0 0;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.05em;
   color: var(--ink);
   text-align: center;
 }
@@ -652,6 +751,7 @@ html.cb-achromatopsia .page-shell { --cb-filter: url("#cb-achromatopsia"); }
 .intro-perch {
   position: relative;
   margin-top: clamp(0.25rem, 1.5vw, 0.75rem);
+  overflow: visible;
 }
 
 .hero-gecko {
@@ -682,10 +782,33 @@ html.cb-achromatopsia .page-shell { --cb-filter: url("#cb-achromatopsia"); }
   margin: 0;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  font-size: clamp(0.95em, 2.2vw, 1.15em);
   color: var(--ink);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
   pointer-events: auto;
+}
+
+@media (max-width: 899px) {
+  .intro-perch {
+    margin-top: clamp(5.5rem, 22vw, 8rem);
+  }
+
+  .hero-gecko {
+    left: 50%;
+    transform: translate(-50%, -58%);
+    width: min(22rem, 92vw);
+    max-width: 100%;
+  }
+
+  .hero-gecko figcaption {
+    left: 6%;
+    top: 6%;
+    font-size: 0.95em;
+  }
+
+  .section--intro .section__head {
+    padding-top: clamp(1.1rem, 4vw, 1.75rem);
+  }
 }
 
 .section--intro {
@@ -718,10 +841,10 @@ main {
 
 .section__head {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem 1rem;
+  gap: 0.5rem 0.75rem;
   margin: -0.15rem 0 1rem;
   padding: 0.65rem 1rem;
   background: var(--header-bar);
@@ -732,6 +855,7 @@ main {
 .section__head .listen-section {
   flex: 0 0 auto;
   align-self: center;
+  white-space: nowrap;
 }
 
 .section h2 {
@@ -742,14 +866,31 @@ main {
   color: #fff;
   font-weight: 400;
   min-width: 0;
-  flex: 1 1 12rem;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  flex: 1 1 auto;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .section h2 {
+    font-size: clamp(18pt, 4.8vw, 36pt);
+  }
 }
 
 @media (max-width: 700px) {
+  .section__head {
+    padding: 0.55rem 0.7rem;
+  }
+
   .section h2 {
-    font-size: clamp(28pt, 9vw, 48pt);
+    font-size: clamp(16pt, 5.2vw, 24pt);
+  }
+
+  .section__head .listen-section {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.55rem;
   }
 }
 
@@ -760,13 +901,14 @@ main {
   line-height: 1.2;
   color: var(--ink);
   font-weight: 700;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 @media (max-width: 700px) {
   .section h3 {
-    font-size: clamp(20pt, 6vw, 32pt);
+    font-size: clamp(18pt, 5.5vw, 26pt);
   }
 }
 
@@ -864,13 +1006,18 @@ main {
 
 .figure img {
   width: 100%;
+  height: auto;
   background: transparent;
   object-fit: contain;
 }
 
+.figure img[src$=".svg"] {
+  display: block;
+}
+
 .figure figcaption {
   padding: 0.85rem 1rem 0.35rem;
-  font-size: 0.98rem;
+  font-size: 0.98em;
   line-height: 1.5;
 }
 
@@ -893,6 +1040,7 @@ body.captions-off .long-desc {
 
 .long-desc {
   padding: 0 1rem 1rem;
+  font-size: 1em;
 }
 
 .long-desc summary {
@@ -932,7 +1080,7 @@ body.captions-off .long-desc {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.98rem;
+  font-size: 0.98em;
   color: var(--ink);
 }
 
@@ -1031,6 +1179,12 @@ body.high-contrast .section h2 {
 body.high-contrast .a11y-bar {
   background: #000;
   border-top: 3px solid #fff;
+}
+
+body.high-contrast .a11y-bar__toggle {
+  background: #000;
+  border-color: #fff;
+  color: #fff;
 }
 
 body.high-contrast .figure {

@@ -8,6 +8,8 @@
   const btnSmaller = document.getElementById("btn-text-smaller");
   const btnResetZoom = document.getElementById("btn-text-reset");
   const colorblindSelect = document.getElementById("colorblind-filter");
+  const a11yBarToggle = document.getElementById("a11y-bar-toggle");
+  const a11yBarToggleLabel = a11yBarToggle?.querySelector(".visually-hidden");
 
   const STORAGE_KEY = "gecko-poster-a11y-v5";
   const MIN_TEXT = 14; // pt
@@ -29,6 +31,7 @@
   let colorblindFilter = "none";
   let queue = [];
   let speaking = false;
+  let speechSession = 0;
 
   const speechSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
 
@@ -90,12 +93,18 @@
     document.querySelectorAll(".is-speaking").forEach((el) => el.classList.remove("is-speaking"));
   }
 
-  function stopSpeech() {
+  function stopSpeechQuiet() {
+    // Bump session so in-flight onend/onerror handlers from cancel() do not continue.
+    speechSession += 1;
     if (speechSupported) window.speechSynthesis.cancel();
     queue = [];
     speaking = false;
-    document.body.classList.remove("reading-active");
     clearSpeakingClass();
+  }
+
+  function stopSpeech() {
+    stopSpeechQuiet();
+    document.body.classList.remove("reading-active");
     btnListenPage?.setAttribute("aria-pressed", "false");
     if (btnListenPage) btnListenPage.textContent = "Listen to page";
     if (btnStop) btnStop.disabled = true;
@@ -117,6 +126,7 @@
     }
 
     stopSpeechQuiet();
+    const session = speechSession;
     document.body.classList.add("reading-active");
     speaking = true;
     btnListenPage?.setAttribute("aria-pressed", "true");
@@ -127,15 +137,23 @@
     queue = chunks.filter((c) => c.text && c.text.length);
     let index = 0;
 
+    const isActive = () => session === speechSession && speaking;
+
+    const finishReading = (message) => {
+      if (session !== speechSession) return;
+      speaking = false;
+      document.body.classList.remove("reading-active");
+      clearSpeakingClass();
+      btnListenPage?.setAttribute("aria-pressed", "false");
+      if (btnListenPage) btnListenPage.textContent = "Listen to page";
+      if (btnStop) btnStop.disabled = true;
+      setStatus(message);
+    };
+
     const speakNext = () => {
+      if (!isActive()) return;
       if (index >= queue.length) {
-        speaking = false;
-        document.body.classList.remove("reading-active");
-        clearSpeakingClass();
-        btnListenPage?.setAttribute("aria-pressed", "false");
-        if (btnListenPage) btnListenPage.textContent = "Listen to page";
-        if (btnStop) btnStop.disabled = true;
-        setStatus("Finished reading.");
+        finishReading("Finished reading.");
         return;
       }
 
@@ -147,13 +165,19 @@
       utter.rate = 1;
       utter.pitch = 1;
       utter.onstart = () => {
+        if (!isActive()) return;
         setStatus(`Reading: ${item.title || "section"}`);
       };
       utter.onend = () => {
+        if (!isActive()) return;
         index += 1;
         speakNext();
       };
-      utter.onerror = () => {
+      utter.onerror = (event) => {
+        if (!isActive()) return;
+        // cancel() often reports interrupted/canceled — do not advance the queue
+        const err = event?.error || "";
+        if (err === "interrupted" || err === "canceled" || err === "cancelled") return;
         index += 1;
         speakNext();
       };
@@ -161,14 +185,10 @@
     };
 
     // Some browsers need a beat after cancel()
-    window.setTimeout(speakNext, 60);
-  }
-
-  function stopSpeechQuiet() {
-    if (speechSupported) window.speechSynthesis.cancel();
-    queue = [];
-    speaking = false;
-    clearSpeakingClass();
+    window.setTimeout(() => {
+      if (!isActive()) return;
+      speakNext();
+    }, 60);
   }
 
   function listenToPage() {
@@ -244,6 +264,27 @@
     const label = colorblindSelect.options[colorblindSelect.selectedIndex]?.text || colorblindFilter;
     setStatus(colorblindFilter === "none" ? "Colorblind filter off." : `Colorblind filter: ${label}.`);
     savePrefs();
+  });
+
+  // Accessibility bar starts maximized; arrow toggles minimize/expand
+  function setA11yBarMinimized(minimized) {
+    document.body.classList.toggle("a11y-bar-minimized", minimized);
+    a11yBarToggle?.setAttribute("aria-expanded", minimized ? "false" : "true");
+    a11yBarToggle?.setAttribute(
+      "title",
+      minimized ? "Expand accessibility bar" : "Minimize accessibility bar"
+    );
+    if (a11yBarToggleLabel) {
+      a11yBarToggleLabel.textContent = minimized
+        ? "Expand accessibility bar"
+        : "Minimize accessibility bar";
+    }
+    setStatus(minimized ? "Accessibility bar minimized." : "Accessibility bar expanded.");
+  }
+
+  a11yBarToggle?.addEventListener("click", () => {
+    const minimized = !document.body.classList.contains("a11y-bar-minimized");
+    setA11yBarMinimized(minimized);
   });
 
   // Keyboard shortcuts: Alt+R read page, Alt+S stop

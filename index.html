@@ -7,7 +7,7 @@
   <title>Geckos from the Late Oligocene and Early Miocene of Peninsular Florida — Accessible Poster</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <button type="button" class="side-nav-toggle" id="side-nav-toggle" aria-controls="side-nav" aria-expanded="false">
@@ -230,13 +230,58 @@
         </figcaption>
       </figure>
 
+      <figure class="figure" aria-labelledby="fig-addl-dent-cap">
+        <img
+          src="assets/fossils/addl-dentaries.svg"
+          alt="Additional dentaries plate with labeled fossil and comparative gecko specimens."
+          width="2000"
+          height="1400"
+        />
+        <figcaption id="fig-addl-dent-cap">
+          <strong>Additional dentaries.</strong>
+          Supplemental dentary specimens from the Oligo-Miocene Florida assemblage and comparative material.
+        </figcaption>
+      </figure>
+
+      <figure class="figure" aria-labelledby="fig-addl-max-cap">
+        <img
+          src="assets/fossils/addl-maxillae.svg"
+          alt="Additional maxillae plate with labeled fossil and comparative gecko specimens."
+          width="2000"
+          height="1400"
+        />
+        <figcaption id="fig-addl-max-cap">
+          <strong>Additional maxillae.</strong>
+          Supplemental maxillary specimens from the Oligo-Miocene Florida assemblage and comparative material.
+        </figcaption>
+      </figure>
+
       <h3>Vertebrae</h3>
       <p>
-        Comparative vertebral plates. In each row, specimens are arranged left to right as:
+        Comparative vertebral plates. In each row of the later photo plates, specimens are arranged left to right as:
         <strong>cf. <i>Coleonyx</i> (TF)</strong>,
         <strong><i>Coleonyx reticulatus</i></strong>, and
         <strong><i>Eublepharis macularius</i></strong>.
       </p>
+      <p>
+        <strong>Note:</strong> The first plate (vector) includes only the fossil
+        (cf. <i>Coleonyx</i> TF) and <i>Coleonyx reticulatus</i>; it does not include
+        <i>Eublepharis macularius</i>.
+      </p>
+
+      <figure class="figure" aria-labelledby="fig-vert-svg-cap">
+        <img
+          src="assets/fossils/vertebrae-plate.svg"
+          alt="Vertebrae plate SVG comparing fossil cf. Coleonyx (TF) and Coleonyx reticulatus; Eublepharis macularius is not included on this plate."
+          width="2000"
+          height="1600"
+        />
+        <figcaption id="fig-vert-svg-cap">
+          <strong>Vertebrae plate.</strong>
+          Vector plate with fossil cf. <i>Coleonyx</i> (TF) and <i>Coleonyx reticulatus</i> only
+          (no <i>Eublepharis macularius</i>).
+        </figcaption>
+      </figure>
 
       <figure class="figure" aria-labelledby="fig-vert-overview-cap">
         <img
@@ -301,13 +346,26 @@
           </figcaption>
         </figure>
       </div>
+
+      <figure class="figure" aria-labelledby="fig-b2-cap">
+        <img
+          src="assets/fossils/b2-specimens.svg"
+          alt="Brooksville 2 fossil gecko specimens plate with labeled elements."
+          width="2000"
+          height="1600"
+        />
+        <figcaption id="fig-b2-cap">
+          <strong>Brooksville 2 specimens.</strong>
+          Fossil gecko elements from Brooksville 2 (~26 Ma).
+        </figcaption>
+      </figure>
     </div>
 
 
       <h3 id="clado-heading">cf. <i>Coleonyx</i> cladogram</h3>
       <figure class="figure figure--wide figure--light" aria-labelledby="fig-clado-cap" aria-describedby="fig-clado-long">
         <img
-          src="assets/panel-cladogram.png"
+          src="assets/cladogram.svg"
           alt="cf. Coleonyx cladogram from the poster. Numbers beside nodes are ages in millions of years. A separate color scale shows posterior support from 0 to 1. Thomas Farm taxon is highlighted as cf. Coleonyx (Thomas Farm)."
           width="1400"
           height="2100"
@@ -336,7 +394,7 @@
       <h3>1. Extant taxa MaxEnt distribution map</h3>
       <figure class="figure figure--light" aria-labelledby="fig1-cap" aria-describedby="fig1-long">
         <img
-          src="assets/fig-maxent.png"
+          src="assets/maxent-dist.svg"
           alt="MaxEnt distribution map of southeastern North America, Mexico, and Central America. Heat map from purple (low) to green/yellow (high) with labeled ecoregions such as Chihuahuan desert, Veracruz dry forests, Sierra de los Tuxtlas, and Yucatán dry forests."
           width="1245"
           height="1382"
@@ -359,7 +417,7 @@
       <h3>2. <i>Coleonyx</i> distribution map</h3>
       <figure class="figure figure--light" aria-labelledby="fig2-cap" aria-describedby="fig2-long">
         <img
-          src="assets/coleonyx-distribution.png"
+          src="assets/coleonyx-dist.svg"
           alt="Coleonyx species distribution map of southwestern United States, Mexico, and Central America with colored range polygons for each species."
           width="1800"
           height="1255"
@@ -382,7 +440,7 @@
       <h3>3. Gecko families native distribution map</h3>
       <figure class="figure figure--light" aria-labelledby="fig3-cap" aria-describedby="fig3-long">
         <img
-          src="assets/gecko-families-map.png"
+          src="assets/family-dist.svg"
           alt="World map with color-coded patterns showing native distributions of major gecko families."
           width="1800"
           height="943"
@@ -405,7 +463,7 @@
       <h3>4. Preferred regions by genus</h3>
       <figure class="figure figure--wide figure--light" aria-labelledby="fig4-cap" aria-describedby="fig4-long">
         <img
-          src="assets/preferred-region.png"
+          src="assets/preferred-genus.svg"
           alt="Preferred regions by genus chart. Genera Heloderma, Tadarida, Coleonyx, Ctenosaura, Rhinophrynus, Boa, Heteromys, and Basiliscus plotted along BioClim PC1 from arid deserts and xeric shrublands through dry broadleaf forests to moist broadleaf forests. Orange lines mark biome medians; a dashed line marks max range overlap."
           width="2000"
           height="1400"
@@ -565,44 +623,57 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <p><a href="#main">Back to top</a></p>
+    <p><a href="#top">Back to top</a></p>
   </footer>
   </div><!-- /.page-content -->
   </div><!-- /.page-shell -->
 
-  <div class="a11y-bar" role="region" aria-label="Accessibility controls">
-    <div class="a11y-bar__inner">
-      <div class="a11y-bar__logos">
-        <img src="assets/uf-logo-bar.png" alt="University of Florida logo" width="120" height="119" />
-        <img src="assets/flmnh-logo-bar.png" alt="Florida Museum logo" width="86" height="120" />
-      </div>
-      <div class="a11y-bar__controls">
-        <p class="a11y-bar__label" id="a11y-label">Accessibility</p>
-        <div class="a11y-controls" role="toolbar" aria-labelledby="a11y-label">
-          <button type="button" id="btn-listen-page" class="a11y-btn a11y-btn--primary" aria-pressed="false">
-            Listen to page
-          </button>
-          <button type="button" id="btn-stop" class="a11y-btn" disabled>Stop</button>
-          <button type="button" id="btn-captions" class="a11y-btn" aria-pressed="true">Captions on</button>
-          <button type="button" id="btn-contrast" class="a11y-btn" aria-pressed="false">High contrast</button>
-          <button type="button" id="btn-text-larger" class="a11y-btn" aria-label="Increase text size">A+</button>
-          <button type="button" id="btn-text-smaller" class="a11y-btn" aria-label="Decrease text size">A−</button>
-          <button type="button" id="btn-text-reset" class="a11y-btn" aria-label="Reset text size to default">Reset zoom</button>
-          <label class="a11y-select-wrap" for="colorblind-filter">
-            <span class="a11y-select-label">Colorblind filter</span>
-            <select id="colorblind-filter" class="a11y-select" aria-label="Colorblind filter">
-              <option value="none">None</option>
-              <option value="protanopia">Protanopia (red-blind)</option>
-              <option value="deuteranopia">Deuteranopia (green-blind)</option>
-              <option value="tritanopia">Tritanopia (blue-blind)</option>
-              <option value="protanomaly">Protanomaly (red-weak)</option>
-              <option value="deuteranomaly">Deuteranomaly (green-weak)</option>
-              <option value="tritanomaly">Tritanomaly (blue-weak)</option>
-              <option value="achromatopsia">Achromatopsia (total)</option>
-            </select>
-          </label>
+  <div class="a11y-bar" id="a11y-bar" role="region" aria-label="Accessibility controls">
+    <button
+      type="button"
+      class="a11y-bar__toggle"
+      id="a11y-bar-toggle"
+      aria-expanded="true"
+      aria-controls="a11y-bar-panel"
+      title="Minimize accessibility bar"
+    >
+      <span class="a11y-bar__toggle-icon" aria-hidden="true">▼</span>
+      <span class="visually-hidden">Minimize accessibility bar</span>
+    </button>
+    <div class="a11y-bar__panel" id="a11y-bar-panel">
+      <div class="a11y-bar__inner">
+        <div class="a11y-bar__logos">
+          <img src="assets/uf-logo-bar.png" alt="University of Florida logo" width="120" height="119" />
+          <img src="assets/flmnh-logo-bar.png" alt="Florida Museum logo" width="86" height="120" />
         </div>
-        <p class="sr-status" id="sr-status" aria-live="polite" aria-atomic="true"></p>
+        <div class="a11y-bar__controls">
+          <p class="a11y-bar__label" id="a11y-label">Accessibility</p>
+          <div class="a11y-controls" role="toolbar" aria-labelledby="a11y-label">
+            <button type="button" id="btn-listen-page" class="a11y-btn a11y-btn--primary" aria-pressed="false">
+              Listen to page
+            </button>
+            <button type="button" id="btn-stop" class="a11y-btn" disabled>Stop</button>
+            <button type="button" id="btn-captions" class="a11y-btn" aria-pressed="true">Captions on</button>
+            <button type="button" id="btn-contrast" class="a11y-btn" aria-pressed="false">High contrast</button>
+            <button type="button" id="btn-text-larger" class="a11y-btn" aria-label="Increase text size">A+</button>
+            <button type="button" id="btn-text-smaller" class="a11y-btn" aria-label="Decrease text size">A−</button>
+            <button type="button" id="btn-text-reset" class="a11y-btn" aria-label="Reset text size to default">Reset zoom</button>
+            <label class="a11y-select-wrap" for="colorblind-filter">
+              <span class="a11y-select-label">Colorblind filter</span>
+              <select id="colorblind-filter" class="a11y-select" aria-label="Colorblind filter">
+                <option value="none">None</option>
+                <option value="protanopia">Protanopia (red-blind)</option>
+                <option value="deuteranopia">Deuteranopia (green-blind)</option>
+                <option value="tritanopia">Tritanopia (blue-blind)</option>
+                <option value="protanomaly">Protanomaly (red-weak)</option>
+                <option value="deuteranomaly">Deuteranomaly (green-weak)</option>
+                <option value="tritanomaly">Tritanomaly (blue-weak)</option>
+                <option value="achromatopsia">Achromatopsia (total)</option>
+              </select>
+            </label>
+          </div>
+          <p class="sr-status" id="sr-status" aria-live="polite" aria-atomic="true"></p>
+        </div>
       </div>
     </div>
   </div>
