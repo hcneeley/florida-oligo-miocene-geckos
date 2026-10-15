@@ -44,7 +44,7 @@
           <span><sup>1</sup> Department of Geology, University of Florida, Gainesville, Florida, USA</span>
           <span><sup>2</sup> Division of Vertebrate Paleontology, Florida Museum of Natural History, Gainesville, Florida, USA</span>
         </p>
-        <p class="contact"><sup>*</sup> <a href="mailto:hunterneeley@ufl.edu">hunterneeley@ufl.edu</a></p>
+        <p class="contact"><sup>*</sup> <a href="mailto:hunterneeley@ufl.edu">hunterneeley@ufl.edu <span class="visually-hidden">(opens email)</span></a></p>
       </div>
       <figure class="hero-visual">
         <img
@@ -60,7 +60,7 @@
 
   <main id="main" tabindex="-1">
     <div class="intro-perch">
-      <figure class="hero-gecko" aria-hidden="false">
+      <figure class="hero-gecko">
         <img
           src="assets/coleonyx-brevis-hero.png"
           alt="Live Texas banded gecko, Coleonyx brevis, in lateral view."
@@ -624,6 +624,13 @@
     </section>
   </main>
 
+  <footer class="site-footer">
+    <p>
+      Geckos from the Late Oligocene and Early Miocene of Peninsular Florida —
+      contact <a href="mailto:hunterneeley@ufl.edu">hunterneeley@ufl.edu <span class="visually-hidden">(opens email)</span></a>
+    </p>
+  </footer>
+
   </div><!-- /.page-content -->
   </div><!-- /.page-shell -->
 
@@ -688,9 +695,18 @@
               <button type="button" id="btn-dyslexia" class="a11y-btn" aria-pressed="false">Dyslexia font</button>
             </div>
             <div class="a11y-controls__group" role="group" aria-label="Text size">
-              <button type="button" id="btn-text-larger" class="a11y-btn" aria-label="Increase text size">A+</button>
-              <button type="button" id="btn-text-smaller" class="a11y-btn" aria-label="Decrease text size">A−</button>
-              <button type="button" id="btn-text-reset" class="a11y-btn" aria-label="Reset text size to default">Reset zoom</button>
+              <button type="button" id="btn-text-larger" class="a11y-btn">
+                <span aria-hidden="true">A+</span>
+                <span class="visually-hidden">Increase text size</span>
+              </button>
+              <button type="button" id="btn-text-smaller" class="a11y-btn">
+                <span aria-hidden="true">A−</span>
+                <span class="visually-hidden">Decrease text size</span>
+              </button>
+              <button type="button" id="btn-text-reset" class="a11y-btn">
+                <span aria-hidden="true">Reset zoom</span>
+                <span class="visually-hidden">Reset text size to default</span>
+              </button>
             </div>
             <div class="a11y-controls__group a11y-controls__group--filter" role="group" aria-label="Color assist">
               <label class="a11y-select-wrap" for="colorblind-filter">

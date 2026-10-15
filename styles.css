@@ -885,6 +885,24 @@ html.cb-achromatopsia .side-nav-backdrop { --cb-filter: url("#cb-achromatopsia")
   margin: 0;
 }
 
+.site-footer {
+  margin: 2.5rem 0 0;
+  padding: 1.25rem 0 0.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--bar) 35%, transparent);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.site-footer p {
+  margin: 0;
+  max-width: 42rem;
+}
+
+.site-footer a {
+  font-weight: 600;
+}
+
 .toc {
   display: flex;
   flex-wrap: wrap;
